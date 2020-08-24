@@ -10,10 +10,46 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_24_153747) do
+ActiveRecord::Schema.define(version: 2020_08_24_162707) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "cars", force: :cascade do |t|
+    t.string "reference"
+    t.integer "price"
+    t.string "model"
+    t.text "description"
+    t.string "registration"
+    t.integer "engine_size"
+    t.string "fuel_type"
+    t.integer "year"
+    t.string "transmission"
+    t.string "hpi_clear"
+    t.string "make"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "finance_provider_id"
+    t.index ["finance_provider_id"], name: "index_cars_on_finance_provider_id"
+    t.index ["user_id"], name: "index_cars_on_user_id"
+  end
+
+  create_table "finance_providers", force: :cascade do |t|
+    t.string "name"
+    t.string "address"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "transactions", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "car_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["car_id"], name: "index_transactions_on_car_id"
+    t.index ["user_id"], name: "index_transactions_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -27,4 +63,7 @@ ActiveRecord::Schema.define(version: 2020_08_24_153747) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "cars", "users"
+  add_foreign_key "transactions", "cars"
+  add_foreign_key "transactions", "users"
 end
