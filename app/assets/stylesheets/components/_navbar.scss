@@ -1,11 +1,17 @@
 .navbar-lewagon {
   justify-content: space-between;
-  background: rgba(0, 0, 0, 0);
-  height: 64px;
+  background-color: transparent;
+  height: 72px;
+}
+
+.alignment {
+min-width: 200px;
 }
 
 .navbar{
 width: 100%;
+padding-top: 24px;
+padding-bottom: 24px;
 }
 
 .navbar-lewagon .navbar-collapse {
@@ -19,7 +25,7 @@ width: 100%;
 .navbar-headings-center {
   display: flex;
   justify-content: space-between;
-  width: 350px;
+  width: 352px;
   font-family: 'Josefin Sans', sans-serif;
 }
 
@@ -29,9 +35,25 @@ width: 100%;
 
   h2{
   font-family: 'Jura', sans-serif;
+  color: white;
   }
 }
 
 .menu {
   width: 20px;
+}
+
+.menu:hover {
+  background-color: lightgrey;
+}
+
+.nav-link {
+  color: white;
+  font-size: 20px;
+}
+
+.login {
+  color: white;
+  font-size: 20px;
+
 }
