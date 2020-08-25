@@ -1,0 +1,24 @@
+.search_bar {
+  text-align: center;
+  margin: auto;
+  width: 32%;
+  border: solid 1px lightgrey;
+  position: relative;
+  margin-top: 180px;
+  border-radius: 0px 9px 9px 0px;
+}
+.postfix {
+  position: absolute;
+  top: 0.9px;
+  right: 0.1px;
+  padding-top: 4px;
+  padding: 6px;
+  width: 50px;
+  border: white;
+  background-color: #22d3e3;
+  border-radius: 0px 9px 9px 0px;
+}
+.postfix:hover {
+  transition: 0.8s;
+  background-color: lightgrey;
+}
