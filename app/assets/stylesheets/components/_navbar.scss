@@ -1,6 +1,11 @@
 .navbar-lewagon {
   justify-content: space-between;
-  background: white;
+  background: rgba(0, 0, 0, 0);
+  height: 64px;
+}
+
+.navbar{
+width: 100%;
 }
 
 .navbar-lewagon .navbar-collapse {
@@ -9,4 +14,24 @@
 
 .navbar-lewagon .navbar-brand img {
   width: 40px;
+}
+
+.navbar-headings-center {
+  display: flex;
+  justify-content: space-between;
+  width: 350px;
+  font-family: 'Josefin Sans', sans-serif;
+}
+
+.title {
+  display: flex;
+  padding-right: 20px;
+
+  h2{
+  font-family: 'Jura', sans-serif;
+  }
+}
+
+.menu {
+  width: 20px;
 }
