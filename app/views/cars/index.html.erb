@@ -1,19 +1,26 @@
-<%= simple_form_for :search, url: cars_path, method: :get do |f|%>
-  <%= f.input :query_make, collection: @cars_all.map(&:make).uniq %>
-  <%= f.input :query_model, collection: @cars_all.map(&:model).uniq %>
-  <%= f.submit "Search", class: "btn btn-primary" %>
-<% end %>
+<div class="simple-form bg-white border mt-4 p-4">
+  <%= simple_form_for :search, url: cars_path, method: :get do |f|%>
+    <%= f.input :query_make, collection: @cars_all.map(&:make).uniq %>
+    <%= f.input :query_model, collection: @cars_all.map(&:model).uniq %>
+    <%= f.submit "Search", class: "btn btn-primary" %>
+  <% end %>
+</div>
 
 <div class="container">
   <div class="row justify-content-center">
-    <div class="col-4">
-        <% @cars.each do |car| %>
-            <div class="card">
+    <% @cars.each do |car| %>
+      <div class="col-4 align-items">
+          <div class="card m-3 p-3">
+            <%= link_to car_path(car) do %>
+              <% if car.photos.first %>
+                <%= cl_image_tag car.photos.first.key, height: 300, width: 400, crop: :fill %>
+              <% end %>
               <%= car.make %>
               <%= car.model %>
               <%= car.price %>
-            </div>
-        <% end %>
-    </div>
+            <% end %>
+          </div>
+      </div>
+    <% end %>
   </div>
 </div>
