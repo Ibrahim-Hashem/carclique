@@ -4,4 +4,10 @@ class CarsController < ApplicationController
   def index
     @cars = Car.where(make: params[:search][:query_make])
   end
+
+  def show
+    @cars = Car.find(params[:id])
+  end
+
+
 end
