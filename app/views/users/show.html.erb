@@ -1,6 +1,17 @@
+<div>
+  <div>
+    <h1> My Listings </h1>
+      <%= link_to 'Add a listing', new_car_path %>
+      <% @cars.each do |car| %>
+      <%= car.make %>
+    <% end %>
+  </div>
 
-<%= link_to 'Add a listing', new_car_path %>
+  <div>
+    <h1>My Biddings </h1>
+      <% current_user.transactions.each do |t| %>
+      <%= t.amount %>
+    <% end %>
+  </div>
 
-<% @cars.each do |car| %>
-<%= car.make %>
-<% end %>
+</div>

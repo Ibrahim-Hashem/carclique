@@ -5,9 +5,9 @@ class TransactionsController < ApplicationController
     @transaction.car = @car
     @transaction.user = current_user
     if @transaction.save
-      redirect_to root_path
-    else 
-      render :new
+      redirect_to user_path(current_user)
+    else
+      render 'cars/show'
     end
   end
 
