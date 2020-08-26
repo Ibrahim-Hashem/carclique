@@ -9,20 +9,18 @@ class CarsController < ApplicationController
       @cars = Car.all
     end
   end
-  
+
   def show
     @car = Car.find(params[:id])
     @transaction = Transaction.new
   end
-
-  
 
   def new
     @car = Car.new
   end
 
   def create
-    @car = Car.new(strong_params)
+    @car = Car.new(car_params)
     @car.user = current_user
     @car.finance_provider = FinanceProvider.find_by(name: params[:car][:finance_provider])
     if @car.save
@@ -35,7 +33,8 @@ class CarsController < ApplicationController
 
   private
 
-  def strong_params
-    params.require(:car).permit(:make, :model, :registration, :price)
+  def car_params
+    params.require(:car).permit(:make, :model, :registration, :price, photos: [])
   end
+
 end

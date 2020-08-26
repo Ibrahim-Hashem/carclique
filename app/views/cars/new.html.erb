@@ -7,6 +7,6 @@
   <%= f.input :registration, label: "Car registration", error: 'registration is mandatory' %>
   <%= f.input :finance_provider, label: "finance provider", error: 'This is mandatory' %>
 
-  <%= f.input :photo, as: :file %>
+  <%= f.input :photos, as: :file, input_html: { multiple: true } %>
   <%= f.button :submit %>
 <% end %>

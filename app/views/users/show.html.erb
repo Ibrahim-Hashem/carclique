@@ -14,4 +14,15 @@
     <% end %>
   </div>
 
+  <% @cars.each do |car| %>
+    <%= link_to car_path(car) do %>
+      <%= car.make %>
+      <%= car.model %>
+      <%= car.price %>
+      <% car.photos.each do |photo| %>
+        <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+      <% end %>
+    <% end %>
+  <% end %>
 </div>
+
