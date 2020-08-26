@@ -1,0 +1,6 @@
+
+<%= link_to 'Add a listing', new_car_path %>
+
+<% @cars.each do |car| %>
+<%= car.make %>
+<% end %>
