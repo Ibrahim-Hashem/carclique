@@ -22,24 +22,19 @@
     </div>
   </div>
 
-
-
-
-  <div class="dropdown">
-    <%= image_tag "menu.png", class: "menu dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-    <div class="dropdown-content">
-      <% if user_signed_in? %>
+    <% if user_signed_in? %>
+      <div class="dropdown">
+       <%= image_tag "menu.png", class: "menu dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+          <div class="dropdown-content">
             <%= link_to "Action", "#", class: "dropdown-item" %>
             <%= link_to "Log Out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
       <% else %>
-        <li class="nav-item">
-          <%= link_to new_user_session_path, class: "nav-link" do %>
-          <span class="login"><i class="fas fa-user"></i> LOG IN</span>
-          <% end  %>
-        </li>
-      <% end %>
-    </div>
+      <li class="nav-item">
+        <%= link_to new_user_session_path, class: "nav-link" do %>
+        <span class="login"><i class="fas fa-user"></i> LOG IN</span>
+      <% end  %>
+      </li>
+    <% end %>
   </div>
-
-
+</div>
 </div>
