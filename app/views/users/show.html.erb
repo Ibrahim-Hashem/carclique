@@ -1,13 +1,28 @@
+<div>
+  <div>
+    <h1> My Listings </h1>
+      <%= link_to 'Add a listing', new_car_path %>
+      <% @cars.each do |car| %>
+      <%= car.make %>
+    <% end %>
+  </div>
 
-<%= link_to 'Add a listing', new_car_path %>
+  <div>
+    <h1>My Biddings </h1>
+      <% current_user.transactions.each do |t| %>
+      <%= t.amount %>
+    <% end %>
+  </div>
 
-<% @cars.each do |car| %>
-  <%= link_to car_path(car) do %>
-    <%= car.make %>
-    <%= car.model %>
-    <%= car.price %>
-    <% car.photos.each do |photo| %>
-      <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+  <% @cars.each do |car| %>
+    <%= link_to car_path(car) do %>
+      <%= car.make %>
+      <%= car.model %>
+      <%= car.price %>
+      <% car.photos.each do |photo| %>
+        <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+      <% end %>
     <% end %>
   <% end %>
-<% end %>
+</div>
+
