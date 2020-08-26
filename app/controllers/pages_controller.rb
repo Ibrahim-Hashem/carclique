@@ -3,7 +3,7 @@ class PagesController < ApplicationController
 
   def home
     if params[:query].present?
-     @cars = Car.search_by_make_and_model(params[:query])
+      @cars = Car.search_by_make_and_model(params[:query])
     else
       @cars = Car.all
     end
