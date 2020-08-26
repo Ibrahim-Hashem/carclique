@@ -1,7 +1,9 @@
-<div class="simple-form bg-white border mt-4 p-4">
+<%= render 'shared/navbar_bg' %>
+<div class="simple-form bg-white border container mt-5 mb-5 p-4">
   <%= simple_form_for :search, url: cars_path, method: :get do |f|%>
     <%= f.input :query_make, collection: @cars_all.map(&:make).uniq %>
     <%= f.input :query_model, collection: @cars_all.map(&:model).uniq %>
+    <%= f.input :query_engine_size, collection: @cars_all.map(&:engine_size).uniq%>
     <%= f.submit "Search", class: "btn btn-primary" %>
   <% end %>
 </div>
@@ -9,7 +11,7 @@
 <div class="container">
   <div class="row justify-content-center">
     <% @cars.each do |car| %>
-      <div class="col-4 align-items">
+      <div class="col-4 d-flex justify-content-center">
           <div class="card m-3 p-3">
             <%= link_to car_path(car) do %>
               <% if car.photos.first %>
