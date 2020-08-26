@@ -3,3 +3,9 @@
   <%= f.input :query_model, collection: @cars.map(&:model).uniq %>
   <%= f.submit "Search", class: "btn btn-primary" %>
 <% end %>
+
+<% @cars.each do |car|%>
+  <%= car.make %>
+  <%= car.model %>
+<% end %>
+
