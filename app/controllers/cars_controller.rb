@@ -9,13 +9,11 @@ class CarsController < ApplicationController
       @cars = Car.all
     end
   end
-  
+
   def show
     @car = Car.find(params[:id])
     @transaction = Transaction.new
   end
-
-  
 
   def new
     @car = Car.new
