@@ -9,6 +9,11 @@ class CarsController < ApplicationController
       @cars = Car.all
     end
   end
+  
+  def show
+    @cars = Car.find(params[:id])
+  end
+
 
   def new
     @car = Car.new
@@ -31,5 +36,4 @@ class CarsController < ApplicationController
   def strong_params
     params.require(:car).permit(:make, :model, :registration, :price)
   end
-
 end

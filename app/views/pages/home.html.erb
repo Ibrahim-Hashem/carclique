@@ -1,1 +1,21 @@
+<div>
+  <div class="homepage-img">
+    <%= render 'shared/navbar' %>
+      <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1555215695-3004980ad54e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2100&q=80);">
+        <div class="container">
+        </div>
+      </div>
+  </div>
+</div>
 
+<div class ='search_bar'>
+  <%= form_tag root_path, method: :get do %>
+      <%= text_field_tag :query,
+        params[:query],
+        class: "form-control",
+        placeholder: "Search..."%>
+        <%= button_tag type: 'submit', class: "button postfix" do %>
+        <i class="fa fa-search" aria-hidden="true"></i>
+        <% end %>
+    <% end %>
+</div>
