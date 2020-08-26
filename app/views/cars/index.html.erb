@@ -1,5 +1,19 @@
 <%= simple_form_for :search, url: cars_path, method: :get do |f|%>
-  <%= f.input :query_make, collection: @cars.map(&:make).uniq %>
-  <%= f.input :query_model, collection: @cars.map(&:model).uniq %>
+  <%= f.input :query_make, collection: @cars_all.map(&:make).uniq %>
+  <%= f.input :query_model, collection: @cars_all.map(&:model).uniq %>
   <%= f.submit "Search", class: "btn btn-primary" %>
 <% end %>
+
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-4">
+        <% @cars.each do |car| %>
+            <div class="card">
+              <%= car.make %>
+              <%= car.model %>
+              <%= car.price %>
+            </div>
+        <% end %>
+    </div>
+  </div>
+</div>
