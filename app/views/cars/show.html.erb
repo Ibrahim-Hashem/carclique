@@ -4,7 +4,7 @@
 <h2><%= @car.model %></h2>
 <h2><%= @car.make %></h2>
 
-<% @car.transactions.each do |t| %>
+<% @car.transactions.last(5).each do |t| %>
   <%= t.amount %>
 <% end %>
 
@@ -12,4 +12,3 @@
   <%= f.label :amount %> <%= f.input :amount %>
   <%= f.submit %>
 <% end %>
-  
