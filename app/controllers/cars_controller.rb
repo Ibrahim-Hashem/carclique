@@ -11,9 +11,11 @@ class CarsController < ApplicationController
   end
   
   def show
-    @cars = Car.find(params[:id])
+    @car = Car.find(params[:id])
+    @transaction = Transaction.new
   end
 
+  
 
   def new
     @car = Car.new
