@@ -6,20 +6,14 @@
 
 <div class="container">
   <div class="row justify-content-center">
-    <% @cars.each do |car|%>
-      <div class="col-4">
-        <div class="column">
+    <div class="col-4">
+        <% @cars.each do |car| %>
             <div class="card">
-              <div class="image">
-                <%#= cl_image_tag("wr8ca9aq3ivxih2nv27r", width: 400, height: 300, crop: :fill) %>
-              </div>
               <%= car.make %>
               <%= car.model %>
               <%= car.price %>
-
             </div>
-          </div>
-      </div>
-    <% end %>
+        <% end %>
+    </div>
   </div>
 </div>
