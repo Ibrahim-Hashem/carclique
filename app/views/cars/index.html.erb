@@ -1,15 +1,39 @@
 
 <div class="simple-form bg-white border container mt-5 mb-5 p-4">
   <%= simple_form_for :search, url: cars_path, method: :get do |f|%>
-    <%= f.input :make, collection: @cars_all.map(&:make).uniq %>
-    <%= f.input :model, collection: @cars_all.map(&:model).uniq %>
-    <%= f.input :engine_size, collection: @cars_all.map(&:engine_size).uniq%>
-    <%= f.input :year, collection: @cars_all.map(&:year).uniq%>
-    <%= f.input :fuel_type, collection: @cars_all.map(&:fuel_type).uniq%>
-    <%= f.input :price, collection: @cars_all.map(&:price).uniq%>
+  <div class="row">
+    <div class="col-4">
+      <%= f.input :make, collection: @cars_all.map(&:make).uniq %>
+    </div>
+    <div class="col-4">
+      <%= f.input :model, collection: @cars_all.map(&:model).uniq %>
+    </div>
+    <div class="col-4">
+      <%= f.input :engine_size, collection: @cars_all.map(&:engine_size).uniq%>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-4">
+      <%= f.input :year, collection: @cars_all.map(&:year).uniq%>
+    </div>
+    <div class="col-4">
+      <%= f.input :fuel_type, collection: @cars_all.map(&:fuel_type).uniq%>
+    </div>
+    <div class="col-4">
+      <%= f.input :price, collection: @cars_all.map(&:price).uniq%>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-4">
     <%= f.input :transmission, collection: @cars_all.map(&:transmission).uniq%>
+    </div>
+    <div class="col-4">
     <%= f.input :colour, collection: @cars_all.map(&:colour).uniq%>
-    <%= f.submit "Search", class: "btn btn-primary" %>
+    </div>
+    <div class="col-4 d-flex justify-content-center text-align-center">
+    <%= f.submit "Search", class: "btn btn-primary h-50 my-4" %>
+    </div>
+  </div>
   <% end %>
 </div>
 
