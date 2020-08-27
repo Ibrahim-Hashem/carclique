@@ -1,14 +1,15 @@
-<h1>hi</h1>
+<div class="container">
+  <h1>hi</h1>
 
+  <h2><%= @car.model %></h2>
+  <h2><%= @car.make %></h2>
 
-<h2><%= @car.model %></h2>
-<h2><%= @car.make %></h2>
+  <% @car.transactions.last(5).each do |t| %>
+    <%= t.amount %>
+  <% end %>
 
-<% @car.transactions.last(5).each do |t| %>
-  <%= t.amount %>
-<% end %>
-
-<%= simple_form_for [@car, Transaction.new] do |f| %>
-  <%= f.label :amount %> <%= f.input :amount %>
-  <%= f.submit %>
-<% end %>
+  <%= simple_form_for [@car, Transaction.new] do |f| %>
+    <%= f.label :amount %> <%= f.input :amount %>
+    <%= f.submit %>
+  <% end %>
+</div>
