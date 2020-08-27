@@ -3,10 +3,11 @@ class CarsController < ApplicationController
 
   def index
     @cars_all = Car.all
+    @cars = Car.all
     if !params[:search].nil?
-      @cars = Car.where(make: params[:search][:query_make]).where(model: params[:search][:query_model])
-    else
-      @cars = Car.all
+      params[:search].each do |key, value|
+        @cars = @cars.where(key => value) if value.present?
+      end
     end
   end
 
@@ -31,6 +32,17 @@ class CarsController < ApplicationController
     else
       render new_car_path
     end
+  end
+
+  # def edit
+    # @car = current_user.car(params[:id])
+  # end
+
+  def update
+
+  end
+
+  def destroy
   end
 
   private
