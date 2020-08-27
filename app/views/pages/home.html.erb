@@ -42,12 +42,12 @@
   </div>
 
 
-  <div class="homepage-container m-3 p-4 bg-white">
+  <div class="homepage-container mb-8 p-4 bg-white">
     <h2>Our Hottest Deals</h2>
     <div class="row justify-content-center">
     <% @deals.each do |car| %>
       <div class="col-4">
-        <div class="cards-homepage-1 m-3 p-3 border bg-white">
+        <div class="cards-homepage-1 mb-10 p-3 border bg-white">
           <%= cl_image_tag car.photos.first.key, class: "homepage-card-image"%>
           <%= car.make %>
           <%= car.model %>
@@ -58,33 +58,30 @@
     </div>
   </div>
 
-  <div class="homepage-container m-3 p-4 ">
-    <h2>Reviews</h2>
-  <div id="carouselExampleIndicators" class="carousel slide bg-light border p-3 m-3" data-ride="carousel">
-    <div class="carousel-inner">
-      <!-- for every review, we are going to iterate over and if its the first review, then give it the active class otherwise its not active. (needs to be active, because additional JS is being run in the background for each carosel) -->
-      <% @reviews.each_with_index do |review, index| %>
-        <div class="carousel-item carclique-carosel-slide text-center <%= index == 0 ? 'active' : '' %>">
-          <h1><%= review[:name] %></h1>
-          <h2><%= review[:content] %></h2>
-        </div>
-      <% end %>
-    </div>
-    <a class="carousel-control-prev " href="#carouselExampleIndicators" role="button" data-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="sr-only">Previous</span>
-    </a>
-    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="sr-only">Next</span>
-    </a>
+  <div class="youtube">
+    <h1>Check us out on Youtube!</h1>
+    <iframe src="https://www.youtube.com/embed/3wSwUxZhiyM" width="560" height="315" frameborder="0"></iframe>
   </div>
-</div>
 
+  <div class="homepage-container m-3 p-4 ">
+      <div id="carouselExampleIndicators" class="carousel slide bg-transparent p-3 m-3" data-ride="carousel">
+        <div class="carousel-inner">
+          <!-- for every review, we are going to iterate over and if its the first review, then give it the active class otherwise its not active. (needs to be active, because additional JS is being run in the background for each carosel) -->
+          <% @reviews.each_with_index do |review, index| %>
+            <div class="carousel-item carclique-carosel-slide text-center <%= index == 0 ? 'active' : '' %>">
+              <h1><%= review[:name] %></h1>
+              <h2><%= review[:content] %></h2>
+            </div>
+          <% end %>
 
-
-
-
-
-
-
+        </div>
+        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
+      </div>
+  </div>
