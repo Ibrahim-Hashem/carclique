@@ -18,20 +18,36 @@ car1 = Car.new(make: 'bmw', model: 'M2', engine_size: 2, user: user, finance_pro
 car1.photos.attach(io: file, filename: 'nes.png', content_type: 'image/png')
 car1.save
 
+file = URI.open('https://images.unsplash.com/photo-1553440569-bcc63803a83d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60')
+
+
 car2 = Car.new(make: 'audi', model: 'A6', engine_size: 4, user: user, finance_provider: finance_provider, price: 15000)
 car2.photos.attach(io: file, filename: 'nes.png', content_type: 'image/png')
 car2.save
+
+file = URI.open('https://images.unsplash.com/photo-1553440569-bcc63803a83d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60')
+
 
 car3 = Car.new(make: 'Mercades', model: 'C250', engine_size: 2.2, user: user, finance_provider: finance_provider, price: 30000)
 car3.photos.attach(io: file, filename: 'nes.png', content_type: 'image/png')
 car3.save
 
+file = URI.open('https://images.unsplash.com/photo-1553440569-bcc63803a83d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60')
+
 car4 = Car.new(make: 'bmw', model: 'M4', engine_size: 4, user: user, finance_provider: finance_provider, price: 20000)
 car4.photos.attach(io: file, filename: 'nes.png', content_type: 'image/png')
 car4.save
+
+file = URI.open('https://images.unsplash.com/photo-1553440569-bcc63803a83d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60')
+
+
 car5 =Car.new(make: 'bmw', model: 'M2', engine_size: 2, user: user, finance_provider: finance_provider, price: 13000)
 car5.photos.attach(io: file, filename: 'nes.png', content_type: 'image/png')
 car5.save
+
+file = URI.open('https://images.unsplash.com/photo-1553440569-bcc63803a83d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60')
+
+
 car6 = Car.new(make: 'bmw', model: 'M8', engine_size: 6, user: user, finance_provider: finance_provider, price: 23000)
 car6.photos.attach(io: file, filename: 'nes.png', content_type: 'image/png')
 car6.save
