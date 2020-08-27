@@ -1,5 +1,5 @@
 class CarsController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:index]
+  skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
     @cars_all = Car.all
@@ -14,6 +14,8 @@ class CarsController < ApplicationController
   def show
     @car = Car.find(params[:id])
     @transaction = Transaction.new
+    @markers = [ {lat: @car.user.latitude,
+        lng: @car.user.longitude, image_url: helpers.asset_url('mapmarker.png')}]
   end
 
   def new

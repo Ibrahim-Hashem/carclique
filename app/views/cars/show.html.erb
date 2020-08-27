@@ -9,7 +9,15 @@
   <% end %>
 
   <%= simple_form_for [@car, @transaction] do |f| %>
-    <%= f.label :amount %> <%= f.input :amount %>
-    <%= f.submit %>
-  <% end %>
+  <%= f.input :amount %>
+  <%= f.submit %>
+<% end %>
+
 </div>
+
+<div id="map"
+   style="width: 40%; height: 300px; box-shadow: 0 0 15px rgba(0,0,0,0.2); margin-top: 80px; margin: 0 auto;"
+   data-markers="<%= @markers.to_json %>"
+   data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+</div>
+

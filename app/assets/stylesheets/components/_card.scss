@@ -1,12 +1,22 @@
 .card {
-  box-shadow: 1px 2px 5px grey;
+  box-shadow: 1px 1px 5px grey;
   height: 400px;
   width: 300px;
+  border-radius: 5px;
+}
+.card:hover {
+  box-shadow: 2px 2px 6px grey;
 }
 
 .card img {
   height: 200px;
-  width: 300px;
+  width: 100%;
+  border-radius: 5px 5px 0px 0px;
 }
 
-
+.card-link{
+  text-decoration: none;
+  color: black;
+  :hover{
+    color:black
+ }

@@ -26,8 +26,8 @@
     <div class="dropdown">
       <%= image_tag "menu.png", class: "menu dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
       <div class="dropdown-content">
-        
-          <%= link_to "My Profile", "#", class: "dropdown-item" %>
+
+          <%= link_to "My Profile", user_path(current_user), class: "dropdown-item" %>
           <%= link_to "Log Out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
       </div>
     </div>
@@ -35,7 +35,7 @@
     <div class="nav-item">
       <%= link_to new_user_session_path, class: "nav-link" do %>
         <span class="login"><i class="fas fa-user"></i> LOG IN</span>
-      <% end %>    
+      <% end %>
     </div>
   <% end  %>
 </div>
