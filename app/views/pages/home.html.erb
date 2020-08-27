@@ -60,7 +60,7 @@
 
   <div class="homepage-container m-3 p-4 ">
     <h2>Reviews</h2>
-  <div id="carouselExampleIndicators" class="carousel slide bg-white border p-3 m-3" data-ride="carousel">
+  <div id="carouselExampleIndicators" class="carousel slide bg-light border p-3 m-3" data-ride="carousel">
     <div class="carousel-inner">
       <!-- for every review, we are going to iterate over and if its the first review, then give it the active class otherwise its not active. (needs to be active, because additional JS is being run in the background for each carosel) -->
       <% @reviews.each_with_index do |review, index| %>
@@ -70,7 +70,7 @@
         </div>
       <% end %>
     </div>
-    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+    <a class="carousel-control-prev " href="#carouselExampleIndicators" role="button" data-slide="prev">
       <span class="carousel-control-prev-icon" aria-hidden="true"></span>
       <span class="sr-only">Previous</span>
     </a>
