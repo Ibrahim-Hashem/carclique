@@ -1,22 +1,23 @@
 <div class="container">
-  <h1>hi</h1>
+    <h1>hi</h1>
 
-  <h2><%= @car.model %></h2>
-  <h2><%= @car.make %></h2>
+    <h2><%= @car.model %></h2>
+    <h2><%= @car.make %></h2>
 
-<% @car.transactions.last(5).each do |t| %>
-  <%= t.amount %>
-<% end %>
+  <% @car.transactions.last(5).each do |t| %>
+    <%= t.amount %>
+  <% end %>
 
-<%= simple_form_for [@car, @transaction] do |f| %>
- <%= f.input :amount %>
+  <%= simple_form_for [@car, @transaction] do |f| %>
+  <%= f.input :amount %>
   <%= f.submit %>
 <% end %>
 
+</div>
 
+<div id="map"
+   style="width: 40%; height: 300px; box-shadow: 0 0 15px rgba(0,0,0,0.2); margin-top: 80px; margin: 0 auto;"
+   data-markers="<%= @markers.to_json %>"
+   data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+</div>
 
-
-  <div id="map"
-       style="width: 40%; height: 300px; box-shadow: 0 0 15px rgba(0,0,0,0.2); margin-top: 80px; margin: 0 auto;"
-       data-markers="<%= @markers.to_json %>"
-       data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"></div>

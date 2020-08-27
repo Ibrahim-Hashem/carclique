@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
-  skip_before_action :authenticate_user!, only: [ :home ]
+  skip_before_action :authenticate_user!, only: [:home]
 
   def home
     if params[:query].present?
@@ -7,6 +7,9 @@ class PagesController < ApplicationController
     else
       @cars = Car.all
     end
-  end
+    #@deals = Car.all.sample(6)
+    @deals = Car.order(:price).first(6)
 
+    @reviews = [{name: "Ben", content: "very good service, would definitely recommend"}, {name: "mo", content: "very good service, would definitely recommend"}]
+  end
 end
