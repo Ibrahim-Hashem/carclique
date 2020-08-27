@@ -34,9 +34,9 @@ class CarsController < ApplicationController
     end
   end
 
-  # def edit
-    # @car = current_user.car(params[:id])
-  # end
+  def edit
+    @car = current_user.car(params[:id])
+  end
 
   def update
 
