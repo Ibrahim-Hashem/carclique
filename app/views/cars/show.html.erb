@@ -1,11 +1,16 @@
-<div class="container">
-    <h1>hi</h1>
+<div class="container mt-5">
+  <div class="container bg-white p-3">
+    <div class="car_show_name">
+        <h2><%= @car.make %> <strong><%=@car.model %></strong></h2>
+    </div>
+    <div>
+       <%= cl_image_tag @car.photos.first.key,class: "car_show_image", crop: :fill %>
+    </div>
+  </div>
 
-    <h2><%= @car.model %></h2>
-    <h2><%= @car.make %></h2>
 
-  <% @car.transactions.last(5).each do |t| %>
-    <%= t.amount %>
+  <% @car.transactions.last(1).each do |t| %>
+    <h6 class="my-4"><strong>Highest Bid:</strong> £<%= t.amount %></h6>
   <% end %>
 
   <%= simple_form_for [@car, @transaction] do |f| %>
