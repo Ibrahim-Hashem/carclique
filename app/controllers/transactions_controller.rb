@@ -3,7 +3,7 @@ class TransactionsController < ApplicationController
     @car = Car.find(params[:car_id])
     @transaction = Transaction.new(transactions_params)
     @transaction.car = @car
-    @transaction.user = current_user
+    @transaction.user = current_user 
     if @transaction.save
       redirect_to user_path(current_user)
     else
