@@ -1,4 +1,4 @@
-<%= render 'shared/navbar_bg' %>
+
 <div class="simple-form bg-white border container mt-5 mb-5 p-4">
   <%= simple_form_for :search, url: cars_path, method: :get do |f|%>
     <%= f.input :make, collection: @cars_all.map(&:make).uniq %>
