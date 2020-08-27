@@ -1,9 +1,14 @@
 
 <div class="simple-form bg-white border container mt-5 mb-5 p-4">
   <%= simple_form_for :search, url: cars_path, method: :get do |f|%>
-    <%= f.input :query_make, collection: @cars_all.map(&:make).uniq %>
-    <%= f.input :query_model, collection: @cars_all.map(&:model).uniq %>
-    <%= f.input :query_engine_size, collection: @cars_all.map(&:engine_size).uniq%>
+    <%= f.input :make, collection: @cars_all.map(&:make).uniq %>
+    <%= f.input :model, collection: @cars_all.map(&:model).uniq %>
+    <%= f.input :engine_size, collection: @cars_all.map(&:engine_size).uniq%>
+    <%= f.input :year, collection: @cars_all.map(&:year).uniq%>
+    <%= f.input :fuel_type, collection: @cars_all.map(&:fuel_type).uniq%>
+    <%= f.input :price, collection: @cars_all.map(&:price).uniq%>
+    <%= f.input :transmission, collection: @cars_all.map(&:transmission).uniq%>
+    <%= f.input :colour, collection: @cars_all.map(&:colour).uniq%>
     <%= f.submit "Search", class: "btn btn-primary" %>
   <% end %>
 </div>
