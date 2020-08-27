@@ -25,13 +25,3 @@ car3 = Car.new(make: 'audi', model: 'rs5', engine_size: 4, user: user, finance_p
 car3.photos.attach(io: file, filename: 'nes.png', content_type: 'image/png')
 car3.save
 
-
-
-
-
-
-
-
-
-
-
