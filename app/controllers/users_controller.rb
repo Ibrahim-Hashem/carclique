@@ -5,5 +5,5 @@ class UsersController < ApplicationController
   def show
     @car = Car.new
     @cars = current_user.cars
+    end
   end
-end
