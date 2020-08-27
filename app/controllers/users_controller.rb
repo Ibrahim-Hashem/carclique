@@ -33,5 +33,6 @@ class UsersController < ApplicationController
   private
   def strong_params
     params.require(:car).permit(:reference, :price, :registration, :description, :finance_provider, :photos [])
+
   end
-end
+  end
