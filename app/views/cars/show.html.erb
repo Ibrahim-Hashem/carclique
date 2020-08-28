@@ -14,7 +14,7 @@
   <% end %>
 
   <%= simple_form_for [@car, @transaction] do |f| %>
-  <%= f.input :amount %>
+  <%= f.input :amount, input_html: { value: @car.transactions.last.amount } %>
   <%= f.submit %>
 <% end %>
 
