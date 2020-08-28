@@ -25,12 +25,13 @@ class CarsController < ApplicationController
 
   def new
     @car = Car.new
+    @user = current_user
   end
 
   def create
     @car = Car.new(car_params)
     @car.user = current_user
-    @car.finance_provider = FinanceProvider.find_by(name: params[:car][:finance_provider])
+    # @car.finance_provider = FinanceProvider.find_by(name: params[:car][:finance_provider])
     if @car.save
       flash[:success] = "Your Car Has been listed"
       redirect_to user_path(current_user)
@@ -44,7 +45,6 @@ class CarsController < ApplicationController
   end
 
   def update
-
   end
 
   def destroy
@@ -53,7 +53,7 @@ class CarsController < ApplicationController
   private
 
   def car_params
-    params.require(:car).permit(:make, :model, :registration, :price, photos: [])
+    params.require(:car).permit(:make, :model, :registration, :year, :price, :finance, :reference, :address, photos: [])
   end
 
 end
