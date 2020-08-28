@@ -1,9 +1,10 @@
 <div class="container">
   <h1 class="heading-center"> My Listings </h1>
-      <%= link_to 'Add a listing', new_car_path %>
-        <% @cars.each do |car| %>
-        <%= car.make %>
-      <% end %>
+  <%= link_to 'Add a listing', new_car_path %>
+
+  <% @my_cars.each do |car| %>
+   <%= car.make %>
+  <% end %>
 
     <div>
       <h1>My Biddings </h1>
@@ -12,7 +13,7 @@
       <% end %>
     </div>
 
-    <% @cars.each do |car| %>
+    <% @my_cars.each do |car| %>
       <%= link_to car_path(car) do %>
         <%= car.make %>
         <%= car.model %>
