@@ -6,12 +6,27 @@
    <%= car.make %>
   <% end %>
 
-    <div>
-      <h1>My Biddings </h1>
-        <% current_user.transactions.last(5).each do |t| %>
-        <%= t.amount %>
-      <% end %>
+    <h1>My Biddings </h1>
+
+    <% @bidded_cars.each do |bidded| %>
+    <div class="card-product">
+       <img src="https://cdn.pixabay.com/photo/2016/04/01/11/10/automobile-1300231__340.png" />
+        <div class="card-product-infos">
+          <h1 id="title"><%= bidded.make %> <%= bidded.model %></h1>
+          <div>
+              <% bidded.transactions.last(5).reverse.each_with_index do |t, i| %>
+              <% if i == 0 %>
+              <h2><strong>£<%= t.amount%></strong> - Your latest bid</h2>
+              <% elsif t.user == current_user %>
+              <h2><strong>£<%= t.amount %></strong> - Previous bid</h2>
+              <% else %>
+              <h2>£<%= t.amount %> - Other bidders</h2>
+              <% end %>
+            <% end %>
+          </div>
+       </div>
     </div>
+    <% end %>
 
     <% @my_cars.each do |car| %>
       <%= link_to car_path(car) do %>
