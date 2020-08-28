@@ -1,0 +1,16 @@
+.btn-filter {
+  background-color: rgb(34, 211, 227);
+  border: 1px solid none;
+  border-radius: 10px;
+  font-family: 'Josefin Sans', sans-serif;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  text-color: white;
+// universal button class. However, do not use the margin, was only used for the index.html.erb page button.
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.btn-filter:hover{
+  transition: 0.4s;
+  background-color: lightgrey;
+}

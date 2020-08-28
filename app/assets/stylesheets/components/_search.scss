@@ -5,10 +5,20 @@
   border: solid 1px lightgrey;
   position: relative;
   margin-top: 180px;
-  border-radius: 0px 9px 9px 0px;
+  border-radius: 30px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+
+
 }
+
+.form-control {
+  border-radius: 30px;
+
+}
+
 .postfix {
   position: absolute;
+  border-radius: 30px;
   top: 0.9px;
   right: 0.1px;
   padding-top: 4px;
@@ -16,9 +26,9 @@
   width: 50px;
   border: white;
   background-color: #22d3e3;
-  border-radius: 0px 9px 9px 0px;
+
 }
 .postfix:hover {
-  transition: 0.8s;
+  transition: 0.4s;
   background-color: lightgrey;
 }
