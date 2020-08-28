@@ -1,27 +1,53 @@
-<div class="container">
-  <h1 class="heading-center"> My Listings </h1>
-  <%= link_to 'Add a listing', new_car_path %>
+<div class="container bg-white my-3" id="container-currentMyLists">
+  <h1 class="heading-center my-3"> My Listings </h1>
+  <%= link_to 'Add a listing', new_car_path, class: "btn btn-primary" %>
 
-  <% @my_cars.each do |car| %>
-   <%= car.make %>
-  <% end %>
-
-    <div>
-      <h1>My Biddings </h1>
-        <% current_user.transactions.last(5).each do |t| %>
-        <%= t.amount %>
-      <% end %>
-    </div>
-
+<div class="container py-3" id="my-cars">
+  <div class="row justify-content-center">
     <% @my_cars.each do |car| %>
-      <%= link_to car_path(car) do %>
-        <%= car.make %>
-        <%= car.model %>
-        <%= car.price %>
-        <% car.photos.each do |photo| %>
-          <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+      <div class="col-4 d-flex justify-content-center">
+        <%= link_to car_path(car), class: 'card-link' do %>
+          <div class="m-3 card">
+            <% if car.photos.first %>
+            <div class="card-image">
+                <%= cl_image_tag car.photos.first.key, crop: :fill %>
+            </div>
+            <% end %>
+            <div class="p-3 card-info">
+              <h5><%= car.make %>   <strong><%= car.model %></strong> </h5>
+               <h5>£ <%= car.price %></h5>
+              <%= car.description %>
+            </div>
+          </div>
         <% end %>
-      <% end %>
+      </div>
     <% end %>
   </div>
+</div>
+
+</div>
+<div class="container py-3" id="container-currentBids">
+  <h1 class="heading-center my-3">My Current Bids </h1>
+
+<% @bidded_cars.each do |car| %>
+  <div class="card-product my-3">
+    <% car.photos.each do |photo| %>
+      <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+    <% end %>
+
+    <div class="card-product-infos">
+      <h2>Make: <%= car.make %></h2>
+      <h2>Model: <%= car.model %></h2>
+       <% car.transactions.last(3).reverse.each_with_index do |t, i| %>
+              <% if i == 0 %>
+              <h2><strong>£<%= t.amount%></strong> - Your latest bid</h2>
+              <% elsif t.user == current_user %>
+              <h2><strong>£<%= t.amount %></strong> - Previous bid</h2>
+              <% else %>
+              <h2>£<%= t.amount %> - Other bidders</h2>
+              <% end %>
+      <% end %>
+    </div>
+  </div>
+<% end %>
 
