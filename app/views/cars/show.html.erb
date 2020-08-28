@@ -35,11 +35,10 @@
     <% end %>
 
     <%= simple_form_for [@car, @transaction] do |f| %>
-      <%= f.input :amount %>
+      <%= f.input :amount, input_html: {min: @car.price, value: @car.price } %> %>
       <%= f.submit "create bid" %>
     <% end %>
   </div>
-
 
 
  </div>
