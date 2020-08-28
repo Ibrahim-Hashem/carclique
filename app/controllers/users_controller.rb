@@ -16,7 +16,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    @car = Car.new
+    # @car = Car.new
     @bidded_cars = Car.joins(:transactions).where(transactions: { user: current_user }).distinct
     @my_cars = Car.where(user: current_user)
   end

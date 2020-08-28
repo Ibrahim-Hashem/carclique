@@ -1,12 +1,15 @@
 <div class="container bg-white border container mt-5 mb-5 p-4 ">
    <h2>Add a car listing</h2>
   <%= simple_form_for @car do |f| %>
-    <%= f.input :reference, label: 'Car PCP reference number', error: 'Refernce number is mandatory, please specify one' %>
-    <%= f.input :price, label: "Car outstanding PCP balance", error: 'Outstanding balance is mandatory' %>
     <%= f.input :make, label: "Car make", error: 'Make is mandatory' %>
     <%= f.input :model, label: "Car model", error: 'Model is mandatory' %>
+    <%= f.input :year, label: 'Car year', error: 'Refernce number is mandatory, please specify one' %>
     <%= f.input :registration, label: "Car registration", error: 'registration is mandatory' %>
-    <%= f.input :finance_provider, label: "finance provider", error: 'This is mandatory' %>
+    <%= f.input :price, label: "Car outstanding PCP balance", error: 'Outstanding balance is mandatory' %>
+    <%= f.input :reference, label: 'Car PCP reference number', error: 'Refernce number is mandatory, please specify one' %>
+    <%= f.input :finance, label: "Finance Provider", error: 'This is mandatory' %>
+    <%= f.input :address, label: "Car location" %>
+    <%= f.input :description, label: "Car description" %>
 
     <%= f.input :photos, as: :file, input_html: { multiple: true } %>
     <%= f.button :submit %>
