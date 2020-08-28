@@ -9,6 +9,7 @@
     <%= f.input :reference, label: 'Car PCP reference number', error: 'Refernce number is mandatory, please specify one' %>
     <%= f.input :finance, label: "Finance Provider", error: 'This is mandatory' %>
     <%= f.input :address, label: "Car location" %>
+    <%= f.input :description, label: "Car description" %>
 
     <%= f.input :photos, as: :file, input_html: { multiple: true } %>
     <%= f.button :submit %>
