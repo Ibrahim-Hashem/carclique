@@ -16,6 +16,11 @@ class CarsController < ApplicationController
     @transaction = Transaction.new
     @markers = [ {lat: @car.user.latitude,
         lng: @car.user.longitude, image_url: helpers.asset_url('mapmarker.png')}]
+    if @transaction
+      flash[:success] = "You're Has Gone Through"
+    else
+      render car_path(params[:car])
+    end
   end
 
   def new
