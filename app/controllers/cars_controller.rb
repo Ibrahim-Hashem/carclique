@@ -14,14 +14,20 @@ class CarsController < ApplicationController
   def show
     @car = Car.find(params[:id])
     @transaction = Transaction.new
-    @markers = [ {lat: @car.user.latitude,
-        lng: @car.user.longitude, image_url: helpers.asset_url('mapmarker.png')}]
+    # @markers = @cars.geocoded.map do |car|
+    #   {
+    #     lat: car.latitude,
+    #     lng: car.longitude
+    #   }
+    # end
+
     if @transaction
       flash[:success] = "You're Has Gone Through"
     else
       render car_path(params[:car])
     end
   end
+
 
   def new
     @car = Car.new
@@ -31,6 +37,8 @@ class CarsController < ApplicationController
   def create
     @car = Car.new(car_params)
     @car.user = current_user
+    @markers = [ {lat: @car.user.latitude,
+        lng: @car.user.longitude, image_url: helpers.asset_url('mapmarker.png')}]
     # @car.finance_provider = FinanceProvider.find_by(name: params[:car][:finance_provider])
     if @car.save
       flash[:success] = "Your Car Has been listed"
@@ -40,20 +48,19 @@ class CarsController < ApplicationController
     end
   end
 
-  def edit
-    @car = current_user.car(params[:id])
-  end
+        def edit
+          @car = current_user.car(params[:id])
+        end
 
-  def update
-  end
+        def update
+        end
 
-  def destroy
-  end
+        def destroy
+        end
 
   private
 
   def car_params
     params.require(:car).permit(:make, :model, :registration, :year, :price, :finance, :reference, :address, :description, photos: [])
   end
-
 end
