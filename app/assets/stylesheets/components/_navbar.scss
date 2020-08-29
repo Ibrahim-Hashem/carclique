@@ -2,7 +2,13 @@
   justify-content: space-between;
   background-color: transparent;
   height: 72px;
+  transition: 0.5s background-color ease;
 }
+
+.navbar-lewagon-grey {
+  background-color: #888888;
+}
+
 
 .blue-bg {
   background-color: aquamarine;
@@ -30,7 +36,7 @@ padding-bottom: 24px;
   display: flex;
   justify-content: space-between;
   width: 352px;
-  font-family: 'Josefin Sans', sans-serif;
+  font-family: montserrat;
 }
 
 .title {

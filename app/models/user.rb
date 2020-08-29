@@ -5,6 +5,4 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_many :cars
   has_many :transactions
-  geocoded_by :address
-  after_validation :geocode, if: :will_save_change_to_address?
 end
