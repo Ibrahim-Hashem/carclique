@@ -48,7 +48,6 @@
     <h2>Our Hottest Deals</h2>
     <div class="row justify-content-center">
     <% @deals.each do |car| %>
-
         <div class="col-4 d-flex justify-content-center">
         <%= link_to car_path(car), class: 'card-link' do %>
           <div class="m-3 card">
