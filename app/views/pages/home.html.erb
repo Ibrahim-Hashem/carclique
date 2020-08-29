@@ -2,6 +2,8 @@
   <div class="homepage-img">
     <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1555215695-3004980ad54e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2100&q=80);">
       <div class="container">
+      <h1><span id="banner-typed-text"></span></h1>
+      <p> Get out of your PCP with no loss involved.</p>
       </div>
     </div>
   </div>
@@ -46,6 +48,7 @@
     <h2>Our Hottest Deals</h2>
     <div class="row justify-content-center">
     <% @deals.each do |car| %>
+
         <div class="col-4 d-flex justify-content-center">
         <%= link_to car_path(car), class: 'card-link' do %>
           <div class="m-3 card">
