@@ -48,13 +48,24 @@
     <h2>Our Hottest Deals</h2>
     <div class="row justify-content-center">
     <% @deals.each do |car| %>
+<<<<<<< HEAD
+        <div class="col-4">
+    <%= link_to car_path(car), class: 'card-link' do %>
+          <div class="cards-homepage-1 my-3 p-3 border bg-white">
+            <%= cl_image_tag car.photos.first.key, class: "homepage-card-image"%>
+            <%= car.make %>
+            <%= car.model %>
+            <%= car.price %>
+          </div>
+      <% end %>
+=======
       <div class="col-4">
         <div class="cards-homepage-1 mb-10 p-3 border bg-white">
           <%= car.make %>
           <%= car.model %>
           <%= car.price %>
+>>>>>>> eac07349c5d56470584eea70df09dad1ed223560
         </div>
-      </div>
     <% end %>
     </div>
   </div>
