@@ -41,9 +41,9 @@
       <h2>Model: <%= car.model %></h2>
        <% car.transactions.last(3).reverse.each_with_index do |t, i| %>
               <% if i == 0 %>
-              <h2><strong>£<%= t.amount%></strong> - Your latest bid</h2>
+              <h2><strong>£<%= t.amount%></strong> - Highest bid</h2>
               <% elsif t.user == current_user %>
-              <h2><strong>£<%= t.amount %></strong> - Previous bid</h2>
+              <h2><strong>£<%= t.amount %></strong> - Your latest bid</h2>
               <% else %>
               <h2>£<%= t.amount %> - Other bidders</h2>
               <% end %>
