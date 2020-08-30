@@ -1,34 +1,45 @@
 .search_bar {
   text-align: center;
   margin: auto;
-  width: 32%;
+  width: 33%;
   border: solid 1px lightgrey;
   position: relative;
   margin-top: 180px;
   border-radius: 30px;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  position: relative;
+  left: 52px;
+
 
 
 }
 
 .form-control {
   border-radius: 30px;
+  height: 56px;
 
 }
 
 .postfix {
   position: absolute;
   border-radius: 30px;
-  top: 0.9px;
-  right: 0.1px;
+  top: 9px;
+  right: 8px;
   padding-top: 4px;
   padding: 6px;
   width: 50px;
   border: white;
-  background-color: #22d3e3;
+  background-color: white;
+  height: 40px;
 
 }
-.postfix:hover {
-  transition: 0.4s;
+
+.postfix:hover{
+
   background-color: lightgrey;
+}
+.fa-search {
+  width: 20%;
+  height: 10%;
+
 }
