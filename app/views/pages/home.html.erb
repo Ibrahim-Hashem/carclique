@@ -48,7 +48,6 @@
     <% @deals.each do |car| %>
       <div class="col-4">
         <div class="cards-homepage-1 mb-10 p-3 border bg-white">
-          <%= cl_image_tag car.photos.first.key, class: "homepage-card-image"%>
           <%= car.make %>
           <%= car.model %>
           <%= car.price %>
