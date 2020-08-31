@@ -22,13 +22,19 @@ class CarsController < ApplicationController
     # end
 
     if @transaction
-      flash[:success] = "You're Has Gone Through"
+      flash[:success] = "Your transaction has gone through"
     else
       render car_path(params[:car])
     end
   end
 
-
+  def accept_bid
+    @car = Car.find(params[:id])
+    last_bid = @car.transactions.last
+    last_bid.update_attribute("status", "Accepted")
+    redirect_to car_path(@car)
+  end
+  
   def new
     @car = Car.new
     @user = current_user
