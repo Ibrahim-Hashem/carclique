@@ -1,31 +1,84 @@
-<div class="listing-pg">
-  <div class="row">
-    <div class="col-sm-4">
-      <div class="form-pg-image border">
-        <h1>hello</h1>
+<div class="container">
+  <div class="listing-pg">
+    <div class="row">
+
+      <div class="col-10 border m-4 p-4">
+        <h2>Edit listing</h2>
+          <%= simple_form_for @car do |f| %>
+          <% @car_makes_form = ["BMW"] %>
+          <div class="row">
+            <div class="col">
+              <%= f.input :make, :collection => @car_makes_form, error: 'Make is mandatory, please specify one' %>
+            </div>
+            <div class="col">
+              <%= f.input :model, label: "Car model", error: 'Model is mandatory, please specify one' %>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col">
+              <%= f.input :year, label: 'Car year', error: 'Car year is mandatory, please specify one' %>
+            </div>
+            <div class="col">
+              <%= f.input :registration, label: "Car registration", error: 'registration is mandatory' %>
+            </div>
+          </div>
+
+          <div class="row justify-content-center border button-columns">
+            <div class="col">
+              <%= f.input :fuel_type, label: 'Car fuel type', collection: [ ['Diesel' ], ['Petrol'] ], as: :radio_buttons, label_method: :last, value_method: :first, checked: @car.fuel_type, error: 'Fuel type is mandatory, please specify one' %>
+            </div>
+            <div class="col">
+              <%= f.input :transmission, label: 'Car transmission type', collection: [ ['Manual' ], ['Automatic'] ], as: :radio_buttons, label_method: :last, value_method: :first, checked: @car.transmission, error: 'Car transmission is mandatory, please specify one' %>
+            </div>
+            <div class="col">
+              <%= f.input :hpi_clear, label: "Is your car HPI clear", collection: [ ['Yes' ], ['No'] ], as: :radio_buttons, label_method: :last, value_method: :first, checked: @car.hpi_clear, error: 'This is mandatory, please specify' %>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col">
+              <%= f.input :engine_size, label: "Car Engine size", error: 'Engine size is mandatory' %>
+            </div>
+            <div class="col">
+              <%= f.input :colour, label: "Car colour", error: 'colour is mandatory, please specify one' %>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col">
+              <%= f.input :price, label: "Car outstanding PCP balance", error: 'Outstanding balance is mandatory, please specify one' %>
+            </div>
+            <div class="col">
+              <%= f.input :address, label: "Car address" %>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col">
+              <%= f.input :reference, label: 'Car PCP reference number', error: 'Refernce number is mandatory, please specify one' %>
+            </div>
+            <div class="col">
+              <%= f.input :finance, label: "Finance Provider", error: 'This is mandatory, please specify one' %>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col">
+              <%= f.input :description, label: "Car description" %>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col">
+              <%= f.input :photos, as: :file, input_html: { multiple: true } %>
+              <%= f.button :submit %>
+              <% end %>
+            </div>
+          </div>
       </div>
-    </div>
-    <div class="col-sm-8 border m-4 p-4">
-      <h2>Add a car listing</h2>
-        <%= simple_form_for @car do |f| %>
-          <%= f.input :make, label: "Car make", error: 'Make is mandatory, please specify one' %>
-          <%= f.input :model, label: "Car model", error: 'Model is mandatory, please specify one' %>
-          <%= f.input :year, label: 'Car year', error: 'Car year is mandatory, please specify one' %>
-          <%= f.input :registration, label: "Car registration", error: 'registration is mandatory' %>
-          <%= f.input :price, label: "Car outstanding PCP balance", error: 'Outstanding balance is mandatory, please specify one' %>
-          <%#= f.input :fuel_type, label: "Car fuel type", error: 'Fuel type is mandatory' %>
-          <%= f.input :fuel_type, label: 'Car fuel_type', collection: [ ['Diesel' ], ['Petrol'] ], as: :radio_buttons, label_method: :last, value_method: :first, checked: @car.fuel_type %>
-          <%#= f.input :transmission, label: "Car transmission", error: 'transmission type is mandatory' %>
-          <%= f.input :transmission, label: 'Car transmission type', collection: [ ['Manual' ], ['Automatic'] ], as: :radio_buttons, label_method: :last, value_method: :first, checked: @car.transmission %>
-          <%= f.input :engine_size, label: "Car Engine size", error: 'Engine size is mandatory' %>
-          <%#= f.input :hpi_clear, label: "Is your car HPI clear", as: :radio_buttons, label_method: :last, value_method: :first, checked: @car.hpi_clear %>
-          <%= f.input :reference, label: 'Car PCP reference number', error: 'Refernce number is mandatory, please specify one' %>
-          <%= f.input :finance, label: "Finance Provider", error: 'This is mandatory, please specify one' %>
-          <%= f.input :address, label: "Car address" %>
-          <%= f.input :description, label: "Car description" %>
-          <%= f.input :photos, as: :file, input_html: { multiple: true } %>
-          <%= f.button :submit %>
-        <% end %>
+      <!-- form ends -->
+
     </div>
   </div>
 </div>

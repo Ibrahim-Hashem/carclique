@@ -1,7 +1,7 @@
 
 <div class="container bg-white my-3" id="container-currentMyLists">
   <h1 class="heading-center my-3"> My Listings </h1>
-  <%= link_to 'Add a listing', new_car_path, class: "btn btn-primary" %>
+  <%= link_to 'Add a listing', new_car_path, class: "btn-main btn-success" %>
 
 <div class="container py-3" id="my-cars">
   <div class="row justify-content-center">
@@ -19,8 +19,10 @@
               <h5>£ <%= car.price %></h5>
               <%= car.description %>
             </div>
-            <%= link_to "Delete Listing", car_path(car), method: :delete, data: { confirm: "Are you sure?" } %>
-            <%= link_to "edit Listing", edit_car_path(car) %>
+            <div class="row justify-content-center">
+              <%= link_to "Delete", car_path(car), class: "btn-main bg-danger", method: :delete, data: { confirm: "Are you sure?" } %>
+              <%= link_to "edit", edit_car_path(car), class: "btn-main bg-primary" %>
+            </div>
           </div>
         <% end %>
       </div>
