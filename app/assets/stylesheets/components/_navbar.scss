@@ -3,6 +3,9 @@
   background-color: transparent;
   height: 72px;
   transition: 0.5s background-color ease;
+  position: fixed;
+  top: 0;
+  z-index: 10;
 }
 
 .navbar-lewagon-grey {
