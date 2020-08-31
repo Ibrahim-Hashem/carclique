@@ -1,80 +1,108 @@
-<div>
-  <div class="homepage-img">
-    <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1555215695-3004980ad54e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2100&q=80);">
-      <div class="container">
+<div class="homepage-img">
+  <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1555215695-3004980ad54e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2100&q=80);">
+    <div class="container">
+      <br><br><br><br><br><br><br>
       <h1><span id="banner-typed-text"></span></h1>
       <p> Get out of your PCP with no loss involved.</p>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class ='search_bar mb-5'>
-  <%= form_tag root_path, method: :get do %>
-    <%= text_field_tag :query,
-      params[:query],
-      class: "form-control",
-      placeholder: "Search..."%>
-      <%= button_tag type: 'submit', class: "button postfix" do %>
-        <i class="fa fa-search" aria-hidden="true"></i>
-      <% end %>
-  <% end %>
-</div>
-
-<div class="container">
-  <div class="homepage-container m-3 p-4">
-    <h2>How we work...</h2>
-    <div class="row justify-content-center">
-      <div class="col-4">
-        <div class="cards-process m-3 p-3 bg-white">
-          1. Lorem ipsum, dolor sit amet consectetur adipisicing elit. At iste ipsum reprehenderit facere ratione explicabo consequuntur necessitatibus tempore. Inventore labore quo consequuntur, error quis quaerat hic a quia consequatur, assumenda!
-        </div>
-      </div>
-      <div class="col-4">
-        <div class="cards-process m-3 p-3 bg-white">
-          2. Lorem ipsum, dolor sit amet consectetur, adipisicing elit. Consequuntur laudantium laboriosam, voluptatibus tenetur accusamus! Libero enim, dolores nam laudantium incidunt unde eligendi atque nobis, nemo magni et asperiores natus culpa?
-        </div>
-      </div>
-      <div class="col-4">
-        <div class="cards-process m-3 p-3 bg-white">
-          3. Lorem ipsum, dolor sit amet consectetur adipisicing, elit. Cumque ut vero temporibus quo dolor exercitationem aliquid enim culpa voluptate totam soluta repudiandae nostrum quisquam ab hic repellat, sit incidunt expedita dolor sit amet consectetur adipisicing, elit..
-        </div>
-      </div>
-    </div>
-  </div>
-
-
-  <div class="homepage-container mb-8 p-4 bg-white">
-    <h2>Our Hottest Deals</h2>
-    <div class="row justify-content-center">
-    <% @deals.each do |car| %>
-        <div class="col-4 d-flex justify-content-center">
-        <%= link_to car_path(car), class: 'card-link' do %>
-          <div class="m-3 card">
-            <% if car.photos.first %>
-            <div class="card-image">
-                <%= cl_image_tag car.photos.first.key, crop: :fill %>
-            </div>
+      <div class="row">
+        <div class="col-sm-9">
+          <div class ='search_bar mb-5'>
+            <%= form_tag cars_path, method: :get do %>
+              <%= text_field_tag :query,
+                params[:query],
+                class: "form-control",
+                placeholder: "Eg: Mercedes"%>
+                <%= button_tag type: 'submit', class: "button postfix" do %>
+                  <i class="fa fa-search" aria-hidden="true"></i>
+                <% end %>
             <% end %>
-            <div class="p-3 card-info">
-              <h5><%= car.make %>   <strong><%= car.model %></strong> </h5>
-               <h5>£ <%= car.price %></h5>
-              <%= car.description %>
-            </div>
           </div>
-        <% end %>
+        </div>
       </div>
-    <% end %>
     </div>
   </div>
-
-  <div class="youtube">
-    <h1>Check us out on Youtube!</h1>
-    <iframe src="https://www.youtube.com/embed/3wSwUxZhiyM" width="560" height="315" frameborder="0"></iframe>
+</div>
+<div class="homepage-container">
+  <div class="sellersinfo">
+    <div class="row justify-content-center">
+      <div class="col-4">
+        <div class="cards-process m-3 p-3 bg-transparent">
+          <i class="fas fa-laptop fa-10x" style="color:white;"></i>
+          <h2> Upload your financed car </h2>
+        </div>
+      </div>
+    <div class="col-4">
+      <div class="cards-process m-3 p-3 bg-transparent">
+        <i class="fas fa-hand-holding-usd fa-10x" style="color:white;"></i>
+        <h2> List your financed car for its remaning debt</h2>
+      </div>
+    </div>
+    <div class="col-4">
+      <div class="cards-process m-3 p-3 bg-transparent">
+        <i class="fas fa-file-invoice-dollar fa-10x" style="color:white;"></i>
+        <h2>Be debt free and get rid of your PCP</h2>
+      </div>
+    </div>
   </div>
+</div>
 
-  <div class="homepage-container m-3 p-4 ">
-      <div id="carouselExampleIndicators" class="carousel slide bg-transparent p-3 m-3" data-ride="carousel">
+<div class="buyersinfo">
+  <div class="row justify-content-center">
+    <div class="col-4">
+      <div class="cards-process m-3 bg-transparent">
+        <i class="fas fa-search fa-10x"></i>
+       <h2> Choose your car </h2>
+      </div>
+    </div>
+    <div class="col-4">
+      <div class="cards-process m-3 bg-transparent">
+        <i class="fas fa-comment-dollar fa-10x"></i>
+       <h2> Bid..then purchase your dream car</h2>
+      </div>
+    </div>
+    <div class="col-4">
+      <div class="cards-process m-3 bg-transparent">
+        <i class="fas fa-car-side fa-10x"></i>
+        <h2>Grab yourself a bargain and drive away with your new car</h2>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="homepage-container m-5 bg-white">
+  <h2>Our Hottest Deals</h2>
+  <div class="row justify-content-center">
+  <% @deals.each do |car| %>
+      <div class="col-4 d-flex justify-content-center">
+      <%= link_to car_path(car), class: 'card-link' do %>
+        <div class="m-3 card">
+          <% if car.photos.first %>
+          <div class="card-image">
+              <%= cl_image_tag car.photos.first.key, crop: :fill %>
+          </div>
+          <% end %>
+          <div class="p-3 card-info">
+            <h5><%= car.make %>   <strong><%= car.model %></strong> </h5>
+             <h5>£ <%= car.price %></h5>
+            <%= car.description %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+  </div>
+</div>
+
+<div class="youtube m-5">
+  <h1>Check us out on Youtube!</h1>
+  <br><br>
+  <iframe src="https://www.youtube.com/embed/3wSwUxZhiyM" width="1060" height="615" frameborder="0"></iframe>
+</div>
+
+
+  <div class="reviews-container mt-5">
+      <div id="carouselExampleIndicators" class="carousel slide bg-transparent" data-ride="carousel">
         <div class="carousel-inner">
           <!-- for every review, we are going to iterate over and if its the first review, then give it the active class otherwise its not active. (needs to be active, because additional JS is being run in the background for each carosel) -->
           <% @reviews.each_with_index do |review, index| %>
@@ -83,7 +111,6 @@
               <h2><%= review[:content] %></h2>
             </div>
           <% end %>
-
         </div>
         <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
           <span class="carousel-control-prev-icon" aria-hidden="true"></span>

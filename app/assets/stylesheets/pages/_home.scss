@@ -2,7 +2,6 @@
   background-size: cover;
   background-position: center;
   padding: 150px 0;
-  margin: -96px;
   height:80vh;
 }
 
@@ -12,6 +11,13 @@
   text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
   font-size: 32px;
   font-weight: bold;
+}
+
+.reviews-container {
+  height: 40vh;
+  background-color: lightgray;
+  width: 100vw;
+  margin: 0 auto;
 }
 
 .banner p {
@@ -26,6 +32,8 @@
   justify-content: space-between;
   margin-top: 80px;
   margin: auto 0px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  height: 200px;
 
 }
 
@@ -36,30 +44,39 @@
 }
 
 .cards-process {
-  box-shadow: 2px 2px black;
-  border: 2px solid black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
 }
 
-.carousel-control-next-icon {
-  background-color: black;
-  box-shadow: 2px 2px grey;
-  border: 1px solid black;
+.cards-process i {
+  height: 240px;
+  width: 240px;
+  margin: 0 auto;
 }
 
+.cards-process h2 {
+  text-align: center;
+
+}
+
+.carousel-control-next-icon,
 .carousel-control-prev-icon {
-  background-color: black;
-  box-shadow: 2px 2px grey;
-  border: 1px solid black;
+  height: 64px;
+  width: 64px;
 }
 
 .youtube{
   position: relative;
-  width: 100%;
-  padding-bottom: 56.25%;
-  height: 0;
-  margin-top:40px;
-  margin: 0 auto;
+  margin-top: 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+
 }
+
 .iframe-container iframe{
   position: absolute;
   top:0;
@@ -68,3 +85,41 @@
   height: 100%;
 }
 
+.threestep {
+  margin-top: 80px;
+
+}
+
+.fas {
+  text-align: center;
+}
+
+#carouselExampleIndicators {
+  height: 100%;
+}
+
+.carousel-inner {
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.buyersinfo {
+  height: 30vh;
+  width: 100vw;
+  margin: 0 auto;
+  background-color: lightgray;
+
+}
+
+.sellersinfo {
+  height: 30vh;
+  background-color: black;
+  width: 100vw;
+  margin: 0 auto;
+  color: white;
+}
+
+.homepage-container {
+  text-align: center;
+}

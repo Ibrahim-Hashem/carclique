@@ -2,7 +2,7 @@
 <!-- <h1>Let CarClique find you your perfect car</h1> -->
 <div class="container-form-form">
   <div class="simple-form container mt-5 mb-5 p-4">
-    <%= simple_form_for :search, url: cars_path, method: :get do |f|%>
+    <%= simple_form_for :search, url: cars_path,  method: :get do |f|%>
     <div class="row">
       <div class="col-4">
         <%= f.input :make, collection: @cars_all.map(&:make).uniq %>
@@ -53,7 +53,7 @@
             <% end %>
             <div class="p-3 card-info">
               <h5><%= car.make %>   <strong><%= car.model %></strong> </h5>
-               <h5>£ <%= car.price %></h5>
+               <h5>£ <%= car.transactions.present? ? car.transactions.last.amount : car.price %></h5>
               <%= car.description %>
             </div>
           </div>

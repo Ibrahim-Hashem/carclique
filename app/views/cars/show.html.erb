@@ -2,6 +2,8 @@
   <div class="row border m-3">
     <div class="col-sm-8 p-3">
       <div>
+        <% @min = @car.transactions.present? ? @car.transactions.last.amount : @car.price %>
+
         <% @car.photos.each do |photo| %>
           <%= cl_image_tag photo.key,class: "car_show_image", crop: :fill %>
         <% end %>
@@ -13,9 +15,9 @@
         <h2><strong><%= @car.make %> <%=@car.model %></strong></h2>
         <h5><%= @car.year %></h5>
         <h5><%= @car.registration %></h5>
-        <h2>£<%= @car.price %></h2>
+        <h2>£<%= @min %></h2>
       </div>
-      <div>
+      <div class="col-sm-12">
         <h5>Current finance provider</h3>
         <%= @car.finance %>
       </div>
@@ -26,11 +28,11 @@
     <div class="col-sm-7">
       <div class="car-overview-showpg p-3">
         <h4>Overview</h4>
-        <h5><%= @car.engine_size %></h5>
-        <h5><i class="fas fa-gas-pump "></i><%= @car.fuel_type %></h5>
-        <h5><%= @car.transmission %></h5>
-        <h5><i class="fas fa-check-square"></i><%= @car.hpi_clear %></h5>
-        <h5><i class="fas fa-tint"></i><%= @car.colour %></h5>
+        <h5><%= image_tag "car-engine-incon.svg", class: "show-icons" %><%= @car.engine_size %></h5>
+        <h5><i class="fas fa-gas-pump show-icons "></i><%= @car.fuel_type %></h5>
+        <h5><%= image_tag "car-transmission.svg", class: "show-icons" %><%= @car.transmission %></h5>
+        <h5><i class="fas fa-check-square show-icons"></i><%= @car.hpi_clear %></h5>
+        <h5><i class="fas fa-tint show-icons-tint"></i><%= @car.colour %></h5>
       </div>
       <div class="car-description-showpg p-3 ">
         <h4>Description</h4>
@@ -44,14 +46,42 @@
       <div id="map"
         style="width: 100%; height: 300px; box-shadow: 0 0 15px rgba(0,0,0,0.2); margin-top: 80px; margin: 0 auto; margin-bottom: 20px;"
         data-markers="<%= @markers.to_json %>"
-        da ta-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+        data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
       </div>
     </div>
   </div>
 
+ <!--  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+  Launch demo modal
+</button>
+ -->
+<!-- Modal -->
+<!-- <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div> -->
 
   <div class="create-a-bid-div border m-3 p-3">
     <h4>Create a bid on this car</h4>
+    <%# @car.transactions.last(1).each do |t| %>
+      <!-- <h6 class="my-4"><strong>Highest Current Bid:</strong> £<%#= t.amount %></h6> -->
+      <%# total = t.amount %>
+    <%# end %>
 
       <% if @car.transactions.any? %>
         <h6 class="my-4"><strong>Highest Current Bid:</strong> £<%= @car.transactions.last.amount %></h6>
@@ -68,9 +98,6 @@
         <span id="pending-status">Status: Still Pending</span>
         <% end %>
       <% end %>
-  
-
-
 
     <% if @car.transactions.any? %>
       <% if @car.transactions.last.status == "Pending" || @car.transactions.last.status == nil %>
@@ -85,8 +112,8 @@
           <%= f.submit "create bid" %>
         <% end %> 
     <% end %>
-  </div>
 
+  </div>
 </div>
 
 
