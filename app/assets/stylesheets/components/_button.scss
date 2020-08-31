@@ -14,3 +14,18 @@
   transition: 0.4s;
   background-color: lightgrey;
 }
+
+.btn-main {
+  width: 100px;
+  color: white;
+  border-radius:30px;
+  padding: 5px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.btn-main:hover {
+  text-decoration: none;
+  color:white;
+  box-shadow: 2px 2px 4px grey;
+  }
