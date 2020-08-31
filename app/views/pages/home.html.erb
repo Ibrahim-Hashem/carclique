@@ -5,34 +5,39 @@
       <h1><span id="banner-typed-text"></span></h1>
       <p> Get out of your PCP with no loss involved.</p>
       </div>
+      <div class="row">
+        <div class="col-sm-9">
+        <div class ='search_bar mb-5'>
+          <%= form_tag root_path, method: :get do %>
+            <%= text_field_tag :query,
+              params[:query],
+              class: "form-control",
+              placeholder: "Eg: Mercedes"%>
+              <%= button_tag type: 'submit', class: "button postfix" do %>
+                <i class="fa fa-search" aria-hidden="true"></i>
+              <% end %>
+          <% end %>
+        </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
-
-<div class ='search_bar mb-5'>
-  <%= form_tag root_path, method: :get do %>
-    <%= text_field_tag :query,
-      params[:query],
-      class: "form-control",
-      placeholder: "Search..."%>
-      <%= button_tag type: 'submit', class: "button postfix" do %>
-        <i class="fa fa-search" aria-hidden="true"></i>
-      <% end %>
-  <% end %>
-</div>
-
 <div class="container">
   <div class="homepage-container m-3 p-4">
     <h2>How we work...</h2>
     <div class="row justify-content-center">
       <div class="col-4">
         <div class="cards-process m-3 p-3 bg-white">
-          1. Lorem ipsum, dolor sit amet consectetur adipisicing elit. At iste ipsum reprehenderit facere ratione explicabo consequuntur necessitatibus tempore. Inventore labore quo consequuntur, error quis quaerat hic a quia consequatur, assumenda!
+          <img src="https://cdn.icon-icons.com/icons2/343/PNG/512/Laptop_35761.png"/>
+         <h2> Choose / Upload your car</h2>
+         <p>have a look</p>
         </div>
       </div>
       <div class="col-4">
         <div class="cards-process m-3 p-3 bg-white">
-          2. Lorem ipsum, dolor sit amet consectetur, adipisicing elit. Consequuntur laudantium laboriosam, voluptatibus tenetur accusamus! Libero enim, dolores nam laudantium incidunt unde eligendi atque nobis, nemo magni et asperiores natus culpa?
+         <h2> Bid on a financed car</h2>
+         <p>have a look</p>
         </div>
       </div>
       <div class="col-4">
@@ -42,8 +47,6 @@
       </div>
     </div>
   </div>
-
-
   <div class="homepage-container mb-8 p-4 bg-white">
     <h2>Our Hottest Deals</h2>
     <div class="row justify-content-center">
@@ -67,12 +70,10 @@
     <% end %>
     </div>
   </div>
-
   <div class="youtube">
     <h1>Check us out on Youtube!</h1>
     <iframe src="https://www.youtube.com/embed/3wSwUxZhiyM" width="560" height="315" frameborder="0"></iframe>
   </div>
-
   <div class="homepage-container m-3 p-4 ">
       <div id="carouselExampleIndicators" class="carousel slide bg-transparent p-3 m-3" data-ride="carousel">
         <div class="carousel-inner">
@@ -83,7 +84,6 @@
               <h2><%= review[:content] %></h2>
             </div>
           <% end %>
-
         </div>
         <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
           <span class="carousel-control-prev-icon" aria-hidden="true"></span>
