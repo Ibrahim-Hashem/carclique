@@ -1,7 +1,7 @@
 
 <div class="container bg-white my-3" id="container-currentMyLists">
   <h1 class="heading-center my-3"> My Listings </h1>
-  <%= link_to 'Add a listing', new_car_path, class: "btn btn-primary" %>
+  <%= link_to 'Add a listing', new_car_path, class: "btn-main btn-success" %>
 
 <div class="container py-3" id="my-cars">
   <div class="row justify-content-center">
@@ -19,8 +19,10 @@
               <h5>£ <%= car.price %></h5>
               <%= car.description %>
             </div>
-            <%= link_to "Delete Listing", car_path(car), method: :delete, data: { confirm: "Are you sure?" } %>
-            <%= link_to "edit Listing", edit_car_path(car) %>
+            <div class="row justify-content-center">
+              <%= link_to "Delete", car_path(car), class: "btn-main bg-danger", method: :delete, data: { confirm: "Are you sure?" } %>
+              <%= link_to "Edit", edit_car_path(car), class: "btn-main bg-primary" %>
+            </div>
           </div>
         <% end %>
       </div>
@@ -34,6 +36,7 @@
 
 <% @bidded_cars.each do |car| %>
   <% if car.transactions.last.user == current_user %>
+<%= link_to car_path(car), class: 'card-link' do %>
   <div class="card-product my-3 winning_bid">
     <% car.photos.each do |photo| %>
       <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
@@ -55,28 +58,32 @@
       <% end %>
     </div>
   </div>
-  <% else %>
-    <div class="card-product my-3 losing_bid">
-      <% car.photos.each do |photo| %>
-        <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
-      <% end %>
-      <div class="card-product-infos">
-        <h2>Make: <%= car.make %></h2>
-        <h2>Model: <%= car.model %></h2>
-        <% car.transactions.last(5).reverse.each_with_index do |t, i| %>
-                <% if i == 0 && t.user == current_user %>
-                <h2><strong>£<%= t.amount%></strong> - You Have The Highest Bid.</h2>
-                <% elsif i == 0 %>
-                <h2><strong>£<%= t.amount%></strong> - Current highest bid</h2>
-                <% elsif t.user == current_user %>
-                <h2><strong>£<%= t.amount %></strong> </h2>
-                <% else %>
-                <h2>£<%= t.amount %></h2>
-                <% end %>
-        <% end %>
-      </div>
-    </div>
   <% end %>
+  <% else %>
+  <%= link_to car_path(car), class: 'card-link' do %>
+
+      <div class="card-product my-3 losing_bid">
+        <% car.photos.each do |photo| %>
+          <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+        <% end %>
+        <div class="card-product-infos">
+          <h2>Make: <%= car.make %></h2>
+          <h2>Model: <%= car.model %></h2>
+          <% car.transactions.last(5).reverse.each_with_index do |t, i| %>
+                  <% if i == 0 && t.user == current_user %>
+                  <h2><strong>£<%= t.amount%></strong> - You Have The Highest Bid.</h2>
+                  <% elsif i == 0 %>
+                  <h2><strong>£<%= t.amount%></strong> - Current highest bid</h2>
+                  <% elsif t.user == current_user %>
+                  <h2><strong>£<%= t.amount %></strong> </h2>
+                  <% else %>
+                  <h2>£<%= t.amount %></h2>
+                  <% end %>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+    <% end %>
 <% end %>
 
 

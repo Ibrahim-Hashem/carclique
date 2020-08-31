@@ -2,6 +2,8 @@
   <div class="row border m-3">
     <div class="col-sm-8 p-3">
       <div>
+        <% @min = @car.transactions.present? ? @car.transactions.last.amount : @car.price %>
+
         <% @car.photos.each do |photo| %>
           <%= cl_image_tag photo.key,class: "car_show_image", crop: :fill %>
         <% end %>
@@ -13,7 +15,7 @@
         <h2><strong><%= @car.make %> <%=@car.model %></strong></h2>
         <h5><%= @car.year %></h5>
         <h5><%= @car.registration %></h5>
-        <h2>£<%= @car.price %></h2>
+        <h2>£<%= @min %></h2>
       </div>
       <div class="col-sm-12">
         <h5>Current finance provider</h3>
@@ -57,7 +59,7 @@
     <% end %>
 
     <%= simple_form_for [@car, @transaction] do |f| %>
-      <%= f.input :amount, input_html: {min: @car.transactions.last.amount, value: @car.transactions.last.amount } %>
+      <%= f.input :amount, input_html: {min: @min , value: @min} %>
       <%= f.submit "create bid" %>
     <% end %>
   </div>
