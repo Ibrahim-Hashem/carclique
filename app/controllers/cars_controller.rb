@@ -48,15 +48,22 @@ class CarsController < ApplicationController
     end
   end
 
-        def edit
-          @car = current_user.car(params[:id])
-        end
+  def edit
+    @car = Car.find(params[:id])
 
-        def update
-        end
+  end
 
-        def destroy
-        end
+  def update
+    @car = Car.find(params[:id])
+    @car.update(car_params)
+    redirect_to user_path(current_user)
+  end
+
+  def destroy
+    @car = Car.find(params[:id])
+    @car.destroy
+    redirect_to user_path(current_user)
+  end
 
   private
 

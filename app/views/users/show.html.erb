@@ -19,6 +19,8 @@
               <h5>£ <%= car.price %></h5>
               <%= car.description %>
             </div>
+            <%= link_to "Delete Listing", car_path(car), method: :delete, data: { confirm: "Are you sure?" } %>
+            <%= link_to "edit Listing", edit_car_path(car) %>
           </div>
         <% end %>
       </div>
