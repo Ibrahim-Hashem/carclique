@@ -22,7 +22,7 @@ class CarsController < ApplicationController
     # end
 
     if @transaction
-      flash[:success] = "You're Has Gone Through"
+      flash[:success] = "Your Bid Has Gone Through"
     else
       render car_path(params[:car])
     end

@@ -31,17 +31,18 @@
   <h1 class="heading-center my-3">My Current Bids </h1>
 
 <% @bidded_cars.each do |car| %>
+
   <div class="card-product my-3">
     <% car.photos.each do |photo| %>
       <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
     <% end %>
-
     <div class="card-product-infos">
       <h2>Make: <%= car.make %></h2>
       <h2>Model: <%= car.model %></h2>
       <% car.transactions.last(5).reverse.each_with_index do |t, i| %>
               <% if i == 0 && t.user == current_user %>
               <h2><strong>£<%= t.amount%></strong> - You are winning! Be alert though, someone might outbid you.</h2>
+
               <% elsif i == 0 %>
               <h2><strong>£<%= t.amount%></strong> - This is the current highest current bid, but it is not yours! If you still want this, need to bid again!</h2>
               <% elsif t.user == current_user %>
