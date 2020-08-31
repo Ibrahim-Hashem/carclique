@@ -26,11 +26,11 @@
     <div class="col-sm-7">
       <div class="car-overview-showpg p-3">
         <h4>Overview</h4>
-        <h5><%= @car.engine_size %></h5>
-        <h5><i class="fas fa-gas-pump "></i><%= @car.fuel_type %></h5>
-        <h5><%= @car.transmission %></h5>
-        <h5><i class="fas fa-check-square"></i><%= @car.hpi_clear %></h5>
-        <h5><i class="fas fa-tint"></i><%= @car.colour %></h5>
+        <h5><%= image_tag "car-engine-incon.svg", class: "show-icons" %><%= @car.engine_size %></h5>
+        <h5><i class="fas fa-gas-pump show-icons "></i><%= @car.fuel_type %></h5>
+        <h5><%= image_tag "car-transmission.svg", class: "show-icons" %><%= @car.transmission %></h5>
+        <h5><i class="fas fa-check-square show-icons"></i><%= @car.hpi_clear %></h5>
+        <h5><i class="fas fa-tint show-icons-tint"></i><%= @car.colour %></h5>
       </div>
       <div class="car-description-showpg p-3 ">
         <h4>Description</h4>
@@ -49,23 +49,17 @@
     </div>
   </div>
 
-
   <div class="create-a-bid-div border m-3 p-3">
     <h4>Create a bid on this car</h4>
-
-
     <% @car.transactions.last(1).each do |t| %>
       <h6 class="my-4"><strong>Highest Current Bid:</strong> £<%= t.amount %></h6>
       <% total = t.amount %>
-    <% end %> 
-
-
+    <% end %>
     <%= simple_form_for [@car, @transaction] do |f| %>
       <%= f.input :amount, input_html: {min: @car.price, value: @car.price } %>
       <%= f.submit "create bid" %>
     <% end %>
   </div>
-
 </div>
 
 
