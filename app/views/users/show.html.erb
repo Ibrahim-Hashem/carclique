@@ -19,6 +19,8 @@
               <h5>£ <%= car.price %></h5>
               <%= car.description %>
             </div>
+            <%= link_to "Delete Listing", car_path(car), method: :delete, data: { confirm: "Are you sure?" } %>
+            <%= link_to "edit Listing", edit_car_path(car) %>
           </div>
         <% end %>
       </div>
@@ -31,26 +33,51 @@
   <h1 class="heading-center my-3">My Current Bids </h1>
 
 <% @bidded_cars.each do |car| %>
-  <div class="card-product my-3">
+  <% if car.transactions.last.user == current_user %>
+  <div class="card-product my-3 winning_bid">
     <% car.photos.each do |photo| %>
       <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
     <% end %>
-
     <div class="card-product-infos">
       <h2>Make: <%= car.make %></h2>
       <h2>Model: <%= car.model %></h2>
       <% car.transactions.last(5).reverse.each_with_index do |t, i| %>
               <% if i == 0 && t.user == current_user %>
-              <h2><strong>£<%= t.amount%></strong> - You are winning! Be alert though, someone might outbid you.</h2>
+              <h2><strong>£<%= t.amount%></strong> - You Have The highest Bid</h2>
+
               <% elsif i == 0 %>
-              <h2><strong>£<%= t.amount%></strong> - This is the current highest current bid, but it is not yours! If you still want this, need to bid again!</h2>
+              <h2><strong>£<%= t.amount%></strong> - Current highest bid</h2>
               <% elsif t.user == current_user %>
-              <h2><strong>£<%= t.amount %></strong> - Well done for bidding! There has been atleast one higher bid since!</h2>
+              <h2><strong>£<%= t.amount %></strong></h2>
               <% else %>
-              <h2>£<%= t.amount %> - A competitor's bid, it has been outbid though!</h2>
+              <h2>£<%= t.amount %></h2>
               <% end %>
       <% end %>
     </div>
   </div>
+  <% else %>
+    <div class="card-product my-3 losing_bid">
+      <% car.photos.each do |photo| %>
+        <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+      <% end %>
+      <div class="card-product-infos">
+        <h2>Make: <%= car.make %></h2>
+        <h2>Model: <%= car.model %></h2>
+        <% car.transactions.last(5).reverse.each_with_index do |t, i| %>
+                <% if i == 0 && t.user == current_user %>
+                <h2><strong>£<%= t.amount%></strong> - You Have The Highest Bid.</h2>
+                <% elsif i == 0 %>
+                <h2><strong>£<%= t.amount%></strong> - Current highest bid</h2>
+                <% elsif t.user == current_user %>
+                <h2><strong>£<%= t.amount %></strong> </h2>
+                <% else %>
+                <h2>£<%= t.amount %></h2>
+                <% end %>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
 <% end %>
+
+
 
