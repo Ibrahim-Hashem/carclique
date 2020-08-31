@@ -29,6 +29,9 @@ class UsersController < ApplicationController
     @car = Car.find(params[:car])
     @car.update(strong_params)
   end
+  def destroy
+
+  end
 
   private
     def strong_params

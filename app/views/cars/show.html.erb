@@ -57,11 +57,10 @@
     <% @car.transactions.last(1).each do |t| %>
       <h6 class="my-4"><strong>Highest Current Bid:</strong> £<%= t.amount %></h6>
       <% total = t.amount %>
-    <% end %> 
-
+    <% end %>
 
     <%= simple_form_for [@car, @transaction] do |f| %>
-      <%= f.input :amount, input_html: {min: @car.price, value: @car.price } %>
+      <%= f.input :amount, input_html: {min: @car.transactions.last.amount, value: @car.transactions.last.amount } %>
       <%= f.submit "create bid" %>
     <% end %>
   </div>

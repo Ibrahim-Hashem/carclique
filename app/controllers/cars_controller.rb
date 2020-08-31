@@ -25,7 +25,7 @@ class CarsController < ApplicationController
       }
 
     if @transaction
-      flash[:success] = "You're Has Gone Through"
+      flash[:success] = "Your Bid Has Gone Through"
     else
       render car_path(params[:car])
     end
@@ -51,15 +51,22 @@ class CarsController < ApplicationController
     end
   end
 
-        def edit
-          @car = current_user.car(params[:id])
-        end
+  def edit
+    @car = Car.find(params[:id])
 
-        def update
-        end
+  end
 
-        def destroy
-        end
+  def update
+    @car = Car.find(params[:id])
+    @car.update(car_params)
+    redirect_to user_path(current_user)
+  end
+
+  def destroy
+    @car = Car.find(params[:id])
+    @car.destroy
+    redirect_to user_path(current_user)
+  end
 
   private
 
