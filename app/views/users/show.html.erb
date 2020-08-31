@@ -1,7 +1,7 @@
 
 <div class="container bg-white my-3" id="container-currentMyLists">
   <h1 class="heading-center my-3"> My Listings </h1>
-  <%= link_to 'Add a listing', new_car_path, class: "btn-main btn-success" %>
+  <%= link_to 'Add a listing', new_car_path, class: "btn-main btn-dark" %>
 
 <div class="container py-3" id="my-cars">
   <div class="row justify-content-center">
@@ -22,7 +22,7 @@
                 <h5> "Congatulations your car has been sold" </h5>
                 <% end %>
               <% else %>
-                <h5> "Your car has not been sold" </h5>            
+                <h5> "Your car has not been sold" </h5>
               <% end %>
               <%= car.description %>
             </div>
