@@ -4,6 +4,9 @@ class CarsController < ApplicationController
   def index
     @cars_all = Car.all
     @cars = Car.all
+    if !params[:query].nil?
+      @cars = Car.where('make ILIKE ?', params[:query])
+    end
     if !params[:search].nil?
       params[:search].each do |key, value|
         @cars = @cars.where(key => value) if value.present?
@@ -14,12 +17,12 @@ class CarsController < ApplicationController
   def show
     @car = Car.find(params[:id])
     @transaction = Transaction.new
-    # @markers = @cars.geocoded.map do |car|
-    #   {
-    #     lat: car.latitude,
-    #     lng: car.longitude
-    #   }
-    # end
+    @markers =
+      {
+        lat: @car.latitude,
+        lng: @car.longitude,
+        image_url: helpers.asset_url('mapmarker.png')
+      }
 
     if @transaction
       flash[:success] = "You're Has Gone Through"

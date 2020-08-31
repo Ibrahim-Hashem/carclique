@@ -2,22 +2,22 @@
   <div class="homepage-img">
     <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1555215695-3004980ad54e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2100&q=80);">
       <div class="container">
-      <h1><span id="banner-typed-text"></span></h1>
-      <p> Get out of your PCP with no loss involved.</p>
-      </div>
-      <div class="row">
-        <div class="col-sm-9">
-        <div class ='search_bar mb-5'>
-          <%= form_tag root_path, method: :get do %>
-            <%= text_field_tag :query,
-              params[:query],
-              class: "form-control",
-              placeholder: "Eg: Mercedes"%>
-              <%= button_tag type: 'submit', class: "button postfix" do %>
-                <i class="fa fa-search" aria-hidden="true"></i>
+        <h1><span id="banner-typed-text"></span></h1>
+        <p> Get out of your PCP with no loss involved.</p>
+        <div class="row">
+          <div class="col-sm-9">
+            <div class ='search_bar mb-5'>
+              <%= form_tag cars_path, method: :get do %>
+                <%= text_field_tag :query,
+                  params[:query],
+                  class: "form-control",
+                  placeholder: "Eg: Mercedes"%>
+                  <%= button_tag type: 'submit', class: "button postfix" do %>
+                    <i class="fa fa-search" aria-hidden="true"></i>
+                  <% end %>
               <% end %>
-          <% end %>
-        </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -29,24 +29,50 @@
     <div class="row justify-content-center">
       <div class="col-4">
         <div class="cards-process m-3 p-3 bg-white">
-          <img src="https://cdn.icon-icons.com/icons2/343/PNG/512/Laptop_35761.png"/>
-         <h2> Choose / Upload your car</h2>
-         <p>have a look</p>
+          <i class="fas fa-laptop fa-10x"></i>
+         <h2> Upload your financed car </h2>
         </div>
       </div>
       <div class="col-4">
         <div class="cards-process m-3 p-3 bg-white">
-         <h2> Bid on a financed car</h2>
-         <p>have a look</p>
+          <i class="fas fa-hand-holding-usd fa-10x"></i>
+         <h2> List your financed car for its remaning debt</h2>
         </div>
       </div>
       <div class="col-4">
         <div class="cards-process m-3 p-3 bg-white">
-          3. Lorem ipsum, dolor sit amet consectetur adipisicing, elit. Cumque ut vero temporibus quo dolor exercitationem aliquid enim culpa voluptate totam soluta repudiandae nostrum quisquam ab hic repellat, sit incidunt expedita dolor sit amet consectetur adipisicing, elit..
+          <i class="fas fa-file-invoice-dollar fa-10x"></i>
+          <h2>Be debt free and get rid of your PCP</h2>
         </div>
       </div>
     </div>
+
+    <div class="row justify-content-center">
+      <div class="col-4">
+        <div class="cards-process m-3 p-3 bg-white">
+          <i class="fas fa-search fa-10x"></i>
+         <h2> Choose your car </h2>
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="cards-process m-3 p-3 bg-white">
+          <i class="fas fa-comment-dollar fa-10x"></i>
+         <h2> Bid..then purchase your dream car</h2>
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="cards-process m-3 p-3 bg-white">
+          <i class="fas fa-car-side fa-10x"></i>
+          <h2>Grab yourself a bargain and drive away with your new car</h2>
+        </div>
+      </div>
+    </div>
+
+
+
+
   </div>
+</div>
   <div class="homepage-container mb-8 p-4 bg-white">
     <h2>Our Hottest Deals</h2>
     <div class="row justify-content-center">
