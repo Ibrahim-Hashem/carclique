@@ -51,17 +51,42 @@
     </div>
   </div>
 
+ <!--  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+  Launch demo modal
+</button>
+ -->
+<!-- Modal -->
+<!-- <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div> -->
+
   <div class="create-a-bid-div border m-3 p-3">
     <h4>Create a bid on this car</h4>
-    <% @car.transactions.last(1).each do |t| %>
-      <h6 class="my-4"><strong>Highest Current Bid:</strong> £<%= t.amount %></h6>
-      <% total = t.amount %>
-    <% end %>
+    <%# @car.transactions.last(1).each do |t| %>
+      <!-- <h6 class="my-4"><strong>Highest Current Bid:</strong> £<%#= t.amount %></h6> -->
+      <%# total = t.amount %>
+    <%# end %>
 
-    <%= simple_form_for [@car, @transaction] do |f| %>
-      <%= f.input :amount, input_html: {min: @min , value: @min} %>
-      <%= f.submit "create bid" %>
-    <% end %>
+    <%#= simple_form_for [@car, @transaction] do |f| %>
+      <%#= f.input :amount, input_html: {min: (@car.transactions.last.amount || @car.amount), value: @car.transactions.last.amount } %>
+      <%#= f.submit "create bid" %>
+    <%# end %>
   </div>
 </div>
 
