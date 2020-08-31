@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   resources :users
   resources :cars do
     resources :transactions, only: [:create]
+    member do
+      patch :accept_bid
+    end
   end
-
 end

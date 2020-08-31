@@ -31,7 +31,13 @@ class CarsController < ApplicationController
     end
   end
 
-
+  def accept_bid
+    @car = Car.find(params[:id])
+    last_bid = @car.transactions.last
+    last_bid.update_attribute("status", "Accepted")
+    redirect_to car_path(@car)
+  end
+  
   def new
     @car = Car.new
     @user = current_user

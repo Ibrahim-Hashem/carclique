@@ -17,6 +17,13 @@
             <div class="p-3 card-info">
               <h5><%= car.make %>   <strong><%= car.model %></strong> </h5>
               <h5>£ <%= car.price %></h5>
+              <% if car.transactions.any? %>
+                <% if car.transactions.last.status == "Accepted" %>
+                <h5> "Congatulations your car has been sold" </h5>
+                <% end %>
+              <% else %>
+                <h5> "Your car has not been sold" </h5>            
+              <% end %>
               <%= car.description %>
             </div>
             <div class="row justify-content-center">
@@ -44,14 +51,17 @@
     <div class="card-product-infos">
       <h2>Make: <%= car.make %></h2>
       <h2>Model: <%= car.model %></h2>
-      <% car.transactions.last(5).reverse.each_with_index do |t, i| %>
-              <% if i == 0 && t.user == current_user %>
-              <h2><strong>£<%= t.amount%></strong> - You Have The highest Bid</h2>
 
+      <% car.transactions.last(3).reverse.each_with_index do |t, i| %>
+              <% if t.user == current_user && t.status == "Accepted" %>
+              <h2><strong> Congratulations, you have won the car!!</strong></h2>
+              <% elsif i == 0 && t.user == current_user %>
+              <h2><strong>£<%= t.amount%></strong> - You are highest bidder </h2>
               <% elsif i == 0 %>
-              <h2><strong>£<%= t.amount%></strong> - Current highest bid</h2>
+              <h2><strong>£<%= t.amount%></strong> - Next best bid</h2>
               <% elsif t.user == current_user %>
-              <h2><strong>£<%= t.amount %></strong></h2>
+              <h2><strong>£<%= t.amount %></strong> - This was your previous bid</h2>
+
               <% else %>
               <h2>£<%= t.amount %></h2>
               <% end %>

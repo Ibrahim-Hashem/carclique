@@ -83,10 +83,36 @@
       <%# total = t.amount %>
     <%# end %>
 
-    <%#= simple_form_for [@car, @transaction] do |f| %>
-      <%#= f.input :amount, input_html: {min: (@car.transactions.last.amount || @car.amount), value: @car.transactions.last.amount } %>
-      <%#= f.submit "create bid" %>
-    <%# end %>
+      <% if @car.transactions.any? %>
+        <h6 class="my-4"><strong>Highest Current Bid:</strong> £<%= @car.transactions.last.amount %></h6>
+      <% end %>
+      <% if current_user == @car.user %>
+        <%= link_to "Accept the bid", accept_bid_car_path(@car), method: :patch %>
+      <% end %>
+      <%= @car.created_at.strftime("Created on %d/%m/%Y") %>
+      <h6> <%= ((Time.now - @car.created_at + 3600)/86400).round %>  days since the car was created </h6>
+      <% if @car.transactions.any? %>
+        <% if @car.transactions.last.status == "Accepted" %>
+        <span id="accepted-status">Status: Accepted</span>
+        <% else %>
+        <span id="pending-status">Status: Still Pending</span>
+        <% end %>
+      <% end %>
+
+    <% if @car.transactions.any? %>
+      <% if @car.transactions.last.status == "Pending" || @car.transactions.last.status == nil %>
+        <%= simple_form_for [@car, @transaction] do |f| %>
+          <%= f.input :amount, input_html: {min: (@car.price || (@car.transactions.last.amount if @car.transactions.any?)) , value: (@car.transactions.last.amount if @car.transactions.any?) } %>
+          <%= f.submit "create bid" %>
+        <% end %>
+      <% end %>
+    <% else %>
+        <%= simple_form_for [@car, @transaction] do |f| %>
+          <%= f.input :amount, input_html: {min: @car.price , value: @car.price } %>
+          <%= f.submit "create bid" %>
+        <% end %> 
+    <% end %>
+
   </div>
 </div>
 

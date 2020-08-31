@@ -6,6 +6,15 @@
   width:100%;
 }
 
+
+#accepted-status {
+  color: orange;
+}
+
+#pending-status {
+  color: green;
+}
+
 .radio-button-field {
   border-radius: 8px;
   margin-bottom: 20px;
@@ -17,3 +26,4 @@
 .box-shadow {
   box-shadow: 1px 0px 100px 20px rgba(0, 0, 0, 0.1);
 }
+
