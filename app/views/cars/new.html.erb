@@ -5,7 +5,7 @@
       <div class="col-10 border m-4 p-4">
         <h2>Add a car listing</h2>
           <%= simple_form_for @car do |f| %>
-          <% @car_makes_form = ["mo"] %>
+          <% @car_makes_form = ["BMW"] %>
           <div class="row">
             <div class="col">
               <%= f.input :make, :collection => @car_makes_form, error: 'Make is mandatory, please specify one' %>
@@ -24,7 +24,7 @@
             </div>
           </div>
 
-          <div class="row justify-content-center border">
+          <div class="row justify-content-center border button-columns">
             <div class="col">
               <%= f.input :fuel_type, label: 'Car fuel type', collection: [ ['Diesel' ], ['Petrol'] ], as: :radio_buttons, label_method: :last, value_method: :first, checked: @car.fuel_type, error: 'Fuel type is mandatory, please specify one' %>
             </div>
