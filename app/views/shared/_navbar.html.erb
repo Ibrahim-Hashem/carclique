@@ -12,14 +12,14 @@
 
   <div class="navbar-headings-center">
     <div class="nav-item">
+      <%= link_to "Home", root_path, class: "nav-link" %>
+    </div>
+    <div class="nav-item">
       <% if user_signed_in? %>
       <%= link_to "Profile", user_path(current_user), class: "nav-link" %>
       <% else %>
       <%= link_to "Profile", user_session_path, class: "nav-link" %>
       <% end %>
-    </div>
-    <div class="nav-item">
-      <%= link_to "Home", root_path, class: "nav-link" %>
     </div>
     <div class="nav-item">
       <%= link_to "Cars", cars_path, class: "nav-link" %>
