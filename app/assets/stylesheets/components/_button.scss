@@ -16,16 +16,48 @@
 }
 
 .btn-main {
-  width: 100px;
+  min-width: 100px;
+  width: auto;
   color: white;
-  border-radius:30px;
-  padding: 5px;
+  background-color: #003366;
+  border-radius:5px;
+  padding: 8px;
   margin: 0 auto;
+  // justify-content
   text-align: center;
 }
 
 .btn-main:hover {
   text-decoration: none;
+  background-color: rgb(100,100,100);
+  box-shadow: 0px 0px 4px grey;
+  transition: 0.3s;
   color:white;
-  box-shadow: 2px 2px 4px grey;
   }
+
+.bg-delete {
+  background-color: rgb(100,100,100);
+  }
+
+
+.btn-back{
+  width: 0 auto;
+  color: white;
+  background-color: #003366;
+  border-radius:5px;
+  padding: 8px;
+  text-align: center;
+  }
+.btn-back:hover{
+  // text-decoration: none;
+  background-color: rgb(100,100,100);
+  box-shadow: 0px 0px 4px grey;
+  transition: 0.3s;
+  color:white;
+}
+.btn-back a{
+  text-decoration: none;
+  // text-align:right;
+  // color:white;
+  }
+

@@ -76,9 +76,11 @@
           <div class="m-3 card card-index">
             
             <div class="p-3 card-info">
+
               <h5> </h5>
               <h5><%= number_to_currency(car.transactions.present? ? car.transactions.last.amount : car.price, unit: '£', precision: 0) %></h5>
               <%= car.description %>
+
             </div>
           </div>
         <% end %>
