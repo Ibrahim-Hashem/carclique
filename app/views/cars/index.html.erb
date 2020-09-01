@@ -46,9 +46,9 @@
       <div class="col-4">
         <%= link_to car_path(car), class: 'card-link' do %>
         <div class="card-index-new">
-        
+
           <div class="card-index-image" style="background-image: url(<%= car.photos.first ? (cl_image_path car.photos.first.key, crop: :fill) : ""  %>)">
-            
+
           </div>
           <div class="card-index-text">
             <span class="date">4 days ago</span>
@@ -69,10 +69,23 @@
               <div class="value"><%= car.mileage %></div>
               <div class="type">Miles</div>
             </div>
-          </div> 
+          </div>
         </div>
+
+<div class="col-4 d-flex justify-content-center">
+        <%= link_to car_path(car), class: 'card-link' do %>
+          <div class="m-3 card card-index">
+
+            <div class="p-3 card-info">
+
+              <h5> </h5>
+              <h5><%= number_to_currency(car.transactions.present? ? car.transactions.last.amount : car.price, unit: '£', precision: 0) %></h5>
+              <%= car.description %>
+
+            </div>
+          </div>
         <% end %>
-      </div>     
+      </div>
     <% end %>
   </div>
 </div>
