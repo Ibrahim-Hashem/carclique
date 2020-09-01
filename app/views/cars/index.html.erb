@@ -40,12 +40,12 @@
   </div>
 </div>
 
-<div class="container bg-white">
+<div class="container all-cards bg-white">
   <div class="row justify-content-center">
     <% @cars.each do |car| %>
       <div class="col-4 d-flex justify-content-center">
         <%= link_to car_path(car), class: 'card-link' do %>
-          <div class="m-3 card">
+          <div class="m-3 card card-index">
             <% if car.photos.first %>
             <div class="card-image">
                 <%= cl_image_tag car.photos.first.key, crop: :fill %>
@@ -53,7 +53,7 @@
             <% end %>
             <div class="p-3 card-info">
               <h5><%= car.make %>   <strong><%= car.model %></strong> </h5>
-               <h5>£ <%= car.transactions.present? ? car.transactions.last.amount : car.price %></h5>
+              <h5>£ <%= car.transactions.present? ? car.transactions.last.amount : car.price %></h5>
               <%= car.description %>
             </div>
           </div>
