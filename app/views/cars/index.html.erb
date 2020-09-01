@@ -54,7 +54,7 @@
             <div class="p-3 card-info">
               <h5><%= car.make %>   <strong><%= car.model %></strong> </h5>
               <h5>£ <%= car.transactions.present? ? car.transactions.last.amount : car.price %></h5>
-              <%= car.description %>
+              <%= car.mileage %>
             </div>
           </div>
         <% end %>
