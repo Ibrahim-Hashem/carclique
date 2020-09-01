@@ -26,8 +26,8 @@
               <%= car.mileage%>
             </div>
             <div class="row justify-content-center">
-              <%= link_to "Delete", car_path(car), class: "btn-main bg-danger", method: :delete, data: { confirm: "Are you sure?" } %>
-              <%= link_to "Edit", edit_car_path(car), class: "btn-main bg-primary" %>
+              <%= link_to "Delete", car_path(car), class: "btn-main bg-delete", method: :delete, data: { confirm: "Are you sure?" } %>
+              <%= link_to "Edit", edit_car_path(car), class: "btn-main" %>
             </div>
           </div>
         <% end %>
