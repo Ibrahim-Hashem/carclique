@@ -17,7 +17,7 @@ class CarsController < ApplicationController
   def show
     @car = Car.find(params[:id])
     @transaction = Transaction.new
-    @similiar_cars = Car.where(make: @car.make).first(6)
+    @similar_cars = Car.where(make: @car.make).first(6)
     @markers =
       {
         lat: @car.latitude,
