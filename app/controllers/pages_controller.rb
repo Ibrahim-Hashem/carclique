@@ -8,7 +8,7 @@ class PagesController < ApplicationController
       @cars = Car.all
     end
     #@deals = Car.all.sample(6)
-    @deals = Car.order(:price).first(6)
+    @deals = Car.order(:price).first(3)
 
     @reviews = [{name: "Ben", content: "very good service, would definitely recommend"}, {name: "mo", content: "very good service, would definitely recommend"}]
   end
