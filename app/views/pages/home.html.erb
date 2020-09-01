@@ -10,7 +10,7 @@
             <%= form_tag cars_path, method: :get do %>
               <%= text_field_tag :query,
                 params[:query],
-                class: "form-control",
+                class: "form-control h70",
                 placeholder: "Eg: Mercedes"%>
                 <%= button_tag type: 'submit', class: "button postfix" do %>
                   <i class="fa fa-search" aria-hidden="true"></i>
@@ -31,16 +31,17 @@
           <h2> Upload your financed car </h2>
         </div>
       </div>
-    <div class="col-4">
-      <div class="cards-process m-3 p-3 bg-transparent">
-        <i class="fas fa-hand-holding-usd fa-10x" style="color:white;"></i>
-        <h2> List your financed car for its remaning debt</h2>
+      <div class="col-4">
+        <div class="cards-process m-3 p-3 bg-transparent">
+          <i class="fas fa-hand-holding-usd fa-10x" style="color:white;"></i>
+          <h2> List your financed car for its remaning debt</h2>
+        </div>
       </div>
-    </div>
-    <div class="col-4">
-      <div class="cards-process m-3 p-3 bg-transparent">
-        <i class="fas fa-file-invoice-dollar fa-10x" style="color:white;"></i>
-        <h2>Be debt free and get rid of your PCP</h2>
+      <div class="col-4">
+        <div class="cards-process m-3 p-3 bg-transparent">
+          <i class="fas fa-file-invoice-dollar fa-10x" style="color:white;"></i>
+          <h2>Be debt free and get rid of your PCP</h2>
+        </div>
       </div>
     </div>
   </div>
