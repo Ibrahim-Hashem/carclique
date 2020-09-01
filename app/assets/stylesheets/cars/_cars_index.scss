@@ -17,20 +17,20 @@
   // grid-template-columns: 300px;
   grid-template-rows: 210px 210px 80px;
   grid-template-areas: "image" "text" "stats";
-  font-family: roboto;
+  font-family: jura;
   border-radius: 18px;
   background: white;
   box-shadow: 5px 5px 15px rgba(0,0,0,0.9);
-  text-align: center; 
+  text-align: center;
   width: 100%;
 }
 
 .card-index-image{
   grid-area: image;
-  
+
   border-top-left-radius: 15px;
   border-top-right-radius: 15px;
-  background-size: cover; 
+  background-size: cover;
 }
 .card-index-text{
   grid-area: text;
@@ -63,7 +63,7 @@
   justify-content: center;
   flex-direction: column;
   padding: 10px;
-  color: white; 
+  color: white;
 }
 
 .card-index-stats .type{
