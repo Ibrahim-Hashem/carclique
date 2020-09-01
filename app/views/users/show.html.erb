@@ -1,7 +1,9 @@
 
 <div class="container bg-white my-3" id="container-currentMyLists">
   <h1 class="heading-center my-3"> My Listings </h1>
-  <%= link_to 'Add a listing', new_car_path, class: "btn-main btn-dark" %>
+  <div class="row justify-content-center">
+    <%= link_to 'Add a listing', new_car_path, class: "btn-main" %>
+  </div>
 
 <div class="container py-3" id="my-cars">
   <div class="row justify-content-center">
@@ -60,7 +62,6 @@
               <h2><strong>£<%= t.amount%></strong> - Bid by another customer</h2>
               <% elsif t.user == current_user %>
               <h2><strong>£<%= t.amount %></strong> - A previous bid by you</h2>
-
               <% else %>
               <h2>£<%= t.amount %></h2>
               <% end %>
