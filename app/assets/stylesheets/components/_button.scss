@@ -10,7 +10,7 @@
   margin-bottom: 20px;
 }
 
-.btn-filter:hover{
+.btn-filter:hover {
   transition: 0.4s;
   background-color: lightgrey;
 }
@@ -19,12 +19,15 @@
   min-width: 100px;
   width: auto;
   color: white;
+  border-radius:8px;
+  padding: 5px;
   background-color: #003366;
   border-radius:5px;
   padding: 8px;
   margin: 0 auto;
   // justify-content
   text-align: center;
+  text-decoration: none;
 }
 
 .btn-main:hover {
@@ -33,14 +36,18 @@
   box-shadow: 0px 0px 4px grey;
   transition: 0.3s;
   color:white;
-  }
+}
+
+.btn-secondary {
+  color: white !important;
+}
 
 .bg-delete {
   background-color: rgb(100,100,100);
   }
 
 
-.btn-back{
+.btn-back {
   width: 0 auto;
   color: white;
   background-color: #003366;
@@ -48,14 +55,15 @@
   padding: 8px;
   text-align: center;
   }
-.btn-back:hover{
+
+.btn-back:hover {
   // text-decoration: none;
   background-color: rgb(100,100,100);
   box-shadow: 0px 0px 4px grey;
   transition: 0.3s;
   color:white;
 }
-.btn-back a{
+.btn-back a {
   text-decoration: none;
   // text-align:right;
   // color:white;
