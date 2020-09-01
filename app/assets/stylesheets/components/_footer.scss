@@ -1,12 +1,11 @@
 .footer {
-  background: #F4F4F4;
+  background: #888888;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  height: 100px;
-  padding: 0px 50px;
+  justify-content: space-around;
   color: rgba(0,0,0,0.3);
-  width: 100%;
+  width: 100vw;
+  margin-right: 30px;
 }
 .footer-links {
   display: flex;
@@ -16,14 +15,30 @@
   color: darkgrey;
 }
 .footer-links a {
-  color: black;
+  color: #003366;
   text-decoration: none;
   font-size: 24px;
-  padding: 0px 10px;
+  padding: 40px;
 }
 .footer-links a:hover {
   color: lightgrey;
 }
 .footer .fa-heart {
   color: #D23333;
+}
+
+.contact {
+}
+
+.details {
+list-style-type: none;
+color: white;
+// font-family: montserrat;
+font-size: 18px;
+margin: 16px;
+
+}
+
+.min-height {
+  min-height: calc(100vh - 64px - 115px);
 }
