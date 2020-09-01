@@ -23,7 +23,7 @@
               <% else %>
                 <h5> "Your car has not been sold" </h5>
               <% end %>
-              <%= car.description %>
+              <%= car.mileage%>
             </div>
             <div class="row justify-content-center">
               <%= link_to "Delete", car_path(car), class: "btn-main bg-danger", method: :delete, data: { confirm: "Are you sure?" } %>
