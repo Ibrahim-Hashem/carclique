@@ -44,6 +44,7 @@
   <div class="row justify-content-center">
     <% @cars.each do |car| %>
       <div class="col-4">
+        <%= link_to car_path(car), class: 'card-link' do %>
         <div class="card-index-new">
         
           <div class="card-index-image" style="background-image: url(<%= car.photos.first ? (cl_image_path car.photos.first.key, crop: :fill) : ""  %>)">
@@ -53,42 +54,25 @@
             <span class="date">4 days ago</span>
             <h2> <%= car.make %>   <strong><%= car.model %></strong></h2>
             <p> blah blah blah blah </p>
+            <h5> <%= car.description %> </h5>
           </div>
           <div class="card-index-stats">
             <div class="stat">
               <div class="value"><%= car.year %></div>
               <div class="type">Make</div>
             </div>
-            <div class="stat">
+            <div class="stat border">
               <div class="value"><%= number_to_currency(car.transactions.present? ? car.transactions.last.amount : car.price, unit: '£', precision: 0) %></div>
               <div class="type">RRP from</div>
             </div>
             <div class="stat">
               <div class="value"><%= car.mileage %></div>
-              <div class="type">Miles travelled</div>
+              <div class="type">Miles</div>
             </div>
           </div> 
         </div>
-      </div>
-
-<div class="col-4 d-flex justify-content-center">
-        <%= link_to car_path(car), class: 'card-link' do %>
-          <div class="m-3 card card-index">
-            
-            <div class="p-3 card-info">
-
-              <h5> </h5>
-              <h5><%= number_to_currency(car.transactions.present? ? car.transactions.last.amount : car.price, unit: '£', precision: 0) %></h5>
-              <%= car.description %>
-
-            </div>
-          </div>
         <% end %>
-      </div>
-
-
-
-      
+      </div>     
     <% end %>
   </div>
 </div>
