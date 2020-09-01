@@ -23,6 +23,8 @@
               <% if car.transactions.any? %>
                 <% if car.transactions.last.status == "Accepted" %>
                 <h5> Congatulations your car has been sold for £ <span><%= car.transactions.last.amount %></span></h5>
+                <% else %>
+                <h5>Pending bids</h5>
                 <% end %>
               <% else %>
                 <h5> Your car has not been sold </h5>
@@ -46,15 +48,7 @@
 
 <% @bidded_cars.each do |car| %>
   <% if car.transactions.last.user == current_user %>
-
-
-
-
   <%= link_to car_path(car), class: 'card-link' do %>
-
-
-
-
     <div class="card-product my-3 winning_bid">
       <% car.photos.each do |photo| %>
         <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
@@ -62,7 +56,6 @@
       <div class="card-product-infos">
         <h2>Make: <%= car.make %></h2>
         <h2>Model: <%= car.model %></h2>
-
         <% car.transactions.last(3).reverse.each_with_index do |t, i| %>
                 <% if t.user == current_user && t.status == "Accepted" %>
                 <h2><strong> Congratulations, you have won the car</strong></h2>
@@ -78,17 +71,9 @@
         <% end %>
       </div>
     </div>
-
-
   <% end %>
-
-
-
-
-
   <% else %>
   <%= link_to car_path(car), class: 'card-link' do %>
-
       <div class="card-product my-3 losing_bid">
         <% car.photos.each do |photo| %>
           <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
@@ -112,6 +97,3 @@
     <% end %>
     <% end %>
 <% end %>
-
-
-
