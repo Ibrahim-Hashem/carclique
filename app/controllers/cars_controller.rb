@@ -17,6 +17,7 @@ class CarsController < ApplicationController
   def show
     @car = Car.find(params[:id])
     @transaction = Transaction.new
+    @similiar_cars = Car.where(make: @car.make).first(6)
     @markers =
       {
         lat: @car.latitude,
@@ -37,7 +38,7 @@ class CarsController < ApplicationController
     last_bid.update_attribute("status", "Accepted")
     redirect_to car_path(@car)
   end
-  
+
   def new
     @car = Car.new
     @user = current_user
@@ -77,6 +78,6 @@ class CarsController < ApplicationController
   private
 
   def car_params
-    params.require(:car).permit(:make, :model, :registration, :year, :price, :finance, :reference, :address, :description, :fuel_type, :transmission, :engine_size, :colour, :hpi_clear, photos: [])
+    params.require(:car).permit(:make, :model, :registration, :year, :mileage, :price, :finance, :reference, :address, :description, :fuel_type, :transmission, :engine_size, :colour, :hpi_clear, photos: [])
   end
 end

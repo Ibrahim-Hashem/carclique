@@ -36,7 +36,10 @@ document.addEventListener('turbolinks:load', () => {
   // Call your JS functions here
   initUpdateNavbarOnScroll();
   initMapbox();
-  loadDynamicBannerText();
+  if (document.getElementById("banner-typed-text")) {
+    loadDynamicBannerText();
+    // (guard clause)
+  }
 });
 
 

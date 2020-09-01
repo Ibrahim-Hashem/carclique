@@ -12,4 +12,7 @@ class PagesController < ApplicationController
 
     @reviews = [{name: "Ben", content: "very good service, would definitely recommend"}, {name: "mo", content: "very good service, would definitely recommend"}]
   end
+
+  def carousel
+  end
 end

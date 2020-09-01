@@ -6,6 +6,20 @@
   width:100%;
 }
 
+.scroll-row {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  overflow: scroll;
+  height: 100px;
+  width: 100%;
+}
+
+.scroll_image {
+  height: 96px;
+  cursor: pointer;
+  margin-right: 3px;
+}
 
 #accepted-status {
   color: orange;
@@ -23,7 +37,15 @@
   margin-right: 2px;
 }
 
-.box-shadow {
+.box-shadow-form {
   box-shadow: 1px 0px 100px 20px rgba(0, 0, 0, 0.1);
+}
+
+.margin-for-container {
+  margin-top: 80px;
+}
+
+.list-design {
+  list-style: none;
 }
 

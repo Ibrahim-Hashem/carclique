@@ -18,14 +18,20 @@
 .btn-main {
   width: 100px;
   color: white;
-  border-radius:30px;
+  border-radius:8px;
   padding: 5px;
   margin: 0 auto;
   text-align: center;
+  text-decoration: none;
 }
 
 .btn-main:hover {
   text-decoration: none;
   color:white;
   box-shadow: 2px 2px 4px grey;
-  }
+}
+
+.btn-secondary {
+  color: white !important;
+}
+

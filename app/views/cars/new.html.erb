@@ -1,14 +1,11 @@
 <div class="container pt-5">
   <div class="listing-pg pt-3">
     <div class="row">
-      <div class="col-12 border m-4 p-4 box-shadow">
+      <div class="col-12 border m-4 p-4 box-shadow-form">
 
        <div class="d-flex w-100 justify-content-between align-items-center">
          <h2>Add listing</h2>
-         <!--  change this class name to button ibrahim has made -->
-         <div class=" btn btn-dark " >
-           <%= link_to 'Back to profile', user_path(current_user) %>
-         </div>
+           <%= link_to 'Back to profile', user_path(current_user), class: 'btn btn-secondary' %>
        </div>
 
           <%= simple_form_for @car do |f| %>
@@ -25,10 +22,13 @@
 
           <div class="row">
             <div class="col">
-              <%= f.input :year, :collection => @car_year_form, prompt: 'Select a year', error: 'Car year is mandatory, please specify one' %>
+              <%= f.input :year, :collection => @car_year_form, prompt: 'Select a year', error: 'Year is mandatory, please specify one' %>
             </div>
             <div class="col">
-              <%= f.input :registration, label: "Car registration", placeholder: 'e.g. NO12 MUI', error: 'registration is mandatory' %>
+              <%#= f.input :mileage, label: "Mileage", placeholder: 'e.g. 18590', error: 'Mileage is mandatory' %>
+            </div>
+            <div class="col">
+              <%= f.input :registration, label: "Car registration", placeholder: 'e.g. NO12 MUI', error: 'Registration is mandatory' %>
             </div>
           </div>
 
@@ -49,7 +49,7 @@
               <%= f.input :engine_size, label: "Car Engine size", placeholder: 'Input the cars engine size', error: 'Engine size is mandatory' %>
             </div>
             <div class="col">
-              <%= f.input :colour, label: "Car colour", placeholder: 'e.g Red', error: 'colour is mandatory, please specify one' %>
+              <%= f.input :colour, label: "Car colour", placeholder: 'e.g Red', error: 'Colour is mandatory, please specify one' %>
             </div>
           </div>
 
@@ -58,7 +58,7 @@
               <%= f.input :price, label: "Car outstanding PCP balance", placeholder: '£10000', error: 'Outstanding balance is mandatory, please specify one' %>
             </div>
             <div class="col">
-              <%= f.input :address, label: "Car address", placeholder: 'e.g 138 Kingsland Road, London' %>
+              <%= f.input :address, label: "Car address", placeholder: 'e.g 138 Kingsland Road, London, E2 8DY' %>
             </div>
           </div>
 
