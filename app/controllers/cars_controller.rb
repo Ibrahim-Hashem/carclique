@@ -19,11 +19,11 @@ class CarsController < ApplicationController
     @transaction = Transaction.new
     @similar_cars = Car.where(make: @car.make).first(6)
     @markers =
-      {
-        lat: @car.latitude,
-        lng: @car.longitude,
-        image_url: helpers.asset_url('mapmarker.png')
-      }
+    {
+      lat: @car.latitude,
+      lng: @car.longitude,
+      image_url: helpers.asset_url('mapmarker.png')
+    }
 
     if @transaction
       flash[:success] = "Your Bid Has Gone Through"
@@ -44,14 +44,12 @@ class CarsController < ApplicationController
     @user = current_user
   end
 
-  def create
+ def create
     @car = Car.new(car_params)
     @car.user = current_user
     @markers = [ {lat: @car.user.latitude,
-        lng: @car.user.longitude, image_url: helpers.asset_url('mapmarker.png')}]
+    lng: @car.user.longitude, image_url: helpers.asset_url('mapmarker.png')}]
     @car.finance_provider = FinanceProvider.find(params[:car][:finance_provider_id].to_i)
-    # raise
-
     if @car.save
       flash[:success] = "Your Car Has been listed"
       redirect_to user_path(current_user)
@@ -62,7 +60,6 @@ class CarsController < ApplicationController
 
   def edit
     @car = Car.find(params[:id])
-
   end
 
   def update
