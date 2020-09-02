@@ -24,7 +24,7 @@
   text-align: center;
   width: 100%;
   transition: 0.5s ease;
-  cursor: pointer; 
+  cursor: pointer;
 }
 
 .card-index-show{
@@ -39,7 +39,7 @@
   text-align: center;
   width: 100%;
   transition: 0.5s ease;
-  cursor: pointer; 
+  cursor: pointer;
 }
 
 .card-index-image{
@@ -65,7 +65,7 @@
 }
 
 .card-index-stats{
-  grid-area: stats;
+  //grid-area: stats;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: 1fr;
@@ -80,7 +80,7 @@
   justify-content: center;
   flex-direction: column;
   padding: 10px 10px 0;
-  color: white; 
+  color: white;
 }
 
 .card-index-stats .type{
@@ -105,4 +105,14 @@
 .card-index-new:hover{
   transform: scale(1.05);
   box-shadow: 5px 5px 15px rgba(0,0,0,0.6)
+}
+
+.btn-edit-delete {
+  position: absolute;
+  top: 400px;
+  left: 32%;
+}
+
+.card-index-show {
+  position: relative;
 }
