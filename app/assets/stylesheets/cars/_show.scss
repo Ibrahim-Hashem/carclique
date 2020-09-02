@@ -2,12 +2,25 @@
 //   text-align: center;
 // }
 
-.show_page_column{
-  position: sticky;
-  top: 80px;
+.photo-gallery {
+  margin-top: 100px;
 }
 
-.car_show_image{
+.car-specs {
+  margin-top: 100px;
+  position: sticky;
+  top: 74px;
+  align-self: flex-start;
+  border-left: 1px solid lightgrey;
+  height: 70vh;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  margin-bottom: 40px;
+}
+
+
+.car_show_image {
   text-align:center;
   width:100%;
 }
@@ -26,6 +39,11 @@
   cursor: pointer;
   margin-right: 3px;
   margin-top: 2px;
+}
+
+.list-design {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
 }
 
 #accepted-status {
