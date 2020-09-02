@@ -35,12 +35,13 @@
       <div class="col-4">
         <%= f.input :colour, collection: @cars_all.map(&:colour).uniq%>
       </div>
+      <div></div>
+      <div>
+        <%= link_to 'View All', cars_path, class: 'btn btn-secondary m-3 d-flex justify-content-center' %>
+      </div>
     </div>
     <% end %>
   </div>
-  <div>
-  <%= link_to 'View All', cars_path, class: 'btn btn-main m-3' %>
-</div>
 </div>
 <div class="container all-cards bg-white">
   <div class="row justify-content-center">
