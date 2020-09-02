@@ -101,8 +101,8 @@
                   <div class="type">Make</div>
                 </div>
                 <div class="stat border">
-                  <div class="value"><%= number_to_currency(car.transactions.present? ? car.transactions.last.amount : car.price, unit: '£', precision: 0) %></div>
                   <div class="type">RRP from</div>
+                  <div class="value"><%= number_to_currency(car.transactions.present? ? car.transactions.last.amount : car.price, unit: '£', precision: 0) %></div>
                 </div>
                 <div class="stat">
                   <div class="value"><%= car.mileage %></div>

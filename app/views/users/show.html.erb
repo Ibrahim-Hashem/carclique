@@ -16,17 +16,19 @@
           <div class="card-index-show mt-3">
             <div class="card-index-image" style="background-image: url(<%= car.photos.first ? (cl_image_path car.photos.first.key, crop: :fill) : ""  %>)">
             </div>
+
             <div class="card-index-text">
               <% if ((Time.now - car.created_at)/86400).ceil == 1 %>
                 <span class="date"><%=((Time.now - car.created_at)/86400).ceil%> Day ago</span>
               <% else %>
                 <span class="date"><%=((Time.now - car.created_at)/86400).ceil%> Days ago</span>
               <% end %>
+
               <h2> <%= car.make %>   <strong><%= car.model %></strong></h2>
               <div>
                 <% if car.transactions.any? %>
                   <% if car.transactions.last.status == "Accepted" %>
-                    <h5> Congatulations your car has been sold for £ <span><%= car.transactions.last.amount %></span></h5>
+                    <h5> Congratulations your car has been sold for £ <span><%= car.transactions.last.amount %></span></h5>
                   <% else %>
                     <h5>Pending bids</h5>
                   <% end %>
