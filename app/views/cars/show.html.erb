@@ -1,144 +1,125 @@
 <div class="container margin-for-container">
-  <div class="row ">
-    <div class="col-sm-8 p-3">
-      <div>
-        <% @min = @car.transactions.present? ? @car.transactions.last.amount : @car.price %>
-          <%= cl_image_tag @car.photos.first.key, class: "car_show_image", crop: :fill %>
-          <div class="scroll-row">
-            <% @car.photos.each do |photo| %>
-              <%= cl_image_tag photo.key, class: "scroll_image", crop: :fill %>
-            <% end %>
-          </div>
-      </div>
-    </div>
-
-    <div class="col-sm-4 p-2 ">
-      <div class="car_show_details mb-5">
-        <h2><strong><%= @car.make %> <%=@car.model %></strong></h2>
-        <h4><%= @car.year %></h4>
-        <h4><%= @car.registration %></h4>
-        <h2>£<%= @min %></h2>
-      </div>
-      <div class="col-sm-12">
-        <h4>Current finance provider</h4>
-        <%= @car.finance %>
-      </div>
-    </div>
-  </div>
-
-  <div class="row m-3">
-    <div class="col-sm-7">
-      <div class="car-overview-showpg ">
-        <h4>Overview</h4>
-        <div class="car-specifications">
-          <ul class="row list-design">
-            <li class="mr-4">
-              <h5><i class="fas fa-tachometer-alt "></i><%= @car.mileage %></h5>
-            </li>
-            <li class="mr-4">
-              <h5><%= image_tag "car-engine-incon.svg", class: "show-icons" %><%= @car.engine_size %>L</h5>
-            </li>
-            <li class="mr-4">
-              <h5><i class="fas fa-gas-pump show-icons "></i><%= @car.fuel_type %></h5>
-            </li>
-            <li class="mr-4">
-              <h5><%= image_tag "car-transmission.svg", class: "show-icons" %><%= @car.transmission %></h5>
-            </li>
-          </ul>
-           <ul class="row list-design">
-            <li class="mr-4">
-              <h5><i class="fas fa-tint show-icons-tint"></i><%= @car.colour %></h5>
-            </li>
-            <li class="mr-4">
-              <% hpi_check = @car.hpi_clear == "Yes" ? "fas fa-check-circle" : "fas fa-times-circle" %>
-              <h5><i class="<%= hpi_check %> show-icons"></i>HPI clear</h5>
-            </li>
-          </ul>
+  <div class="row">
+    <div class="left-side col-sm-8">
+      <div class="col-sm-12 p-3">
+        <div>
+          <% @min = @car.transactions.present? ? @car.transactions.last.amount : @car.price %>
+            <%= cl_image_tag @car.photos.first.key, class: "car_show_image", crop: :fill %>
+            <div class="scroll-row">
+              <% @car.photos.each do |photo| %>
+                <%= cl_image_tag photo.key, class: "scroll_image", crop: :fill %>
+              <% end %>
+            </div>
+            <div class=""><p>(Scroll to see more)</p></div>
         </div>
       </div>
-      <div class="car-description-showpg">
-        <h4>Description</h4>
-        <p><%= @car.description %></p>
-      </div>
-    </div>
-    <div class="col-sm-5">
-      <div class="car-address justify-content-center m-2">
-        <%= @car.address %>
-      </div>
-      <div id="map"
-        style="width: 100%; height: 400px; box-shadow: 0 0 15px rgba(0,0,0,0.2); margin-top: 80px; margin: 0 auto; margin-bottom: 20px;"
-        data-markers="<%= @markers.to_json %>"
-        data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
-      </div>
-    </div>
-  </div>
 
- <!--  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-  Launch demo modal
-</button>
- -->
-<!-- Modal -->
-<!-- <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
+      <div class="col-sm-12">
+        <div class="car-description-showpg mt-2">
+          <h4>Description</h4>
+          <p><%= @car.description %>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Excepturi optio eveniet commodi eligendi rerum vel illum beatae expedita dolore sequi quod cumque iusto, autem harum, distinctio quidem deleniti inventore eum? Lorem ipsum, dolor sit amet consectetur adipisicing, elit. Modi ipsa placeat, reiciendis porro quo fugiat dicta, debitis, vel iste nihil inventore laborum ratione libero, nesciunt tenetur? Repellat sit tenetur repudiandae. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Corporis odio cumque maiores quisquam dolor corrupti accusamus reprehenderit nihil nesciunt optio perspiciatis fugit eligendi, iusto eveniet laudantium libero eius. Ducimus, ad. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Labore, odio, ex. Deleniti velit iure, error porro quis excepturi ea quam quasi natus dolorum odio voluptate est adipisci atque corporis esse.</p>
+        </div>
       </div>
-      <div class="modal-body">
-        ...
+      <div class="col-sm-12">
+        <h4>Car address</h4>
+        <div class="car-address justify-content-center mt-3 mb-3">
+          <%= @car.address %>
+        </div>
+        <div id="map"
+          style="width: 100%; height: 350px; box-shadow: 0 0 15px rgba(0,0,0,0.2); margin: 0 auto; margin-bottom: 40px;"
+          data-markers="<%= @markers.to_json %>"
+          data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+        </div>
       </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
-  </div>
-</div> -->
+     <!-- </div> --> <!-- change this to see changes made by column-->
 
-  <div class="create-a-bid-div border p-3">
-    <h4>Create a bid on this car</h4>
-    <%# @car.transactions.last(1).each do |t| %>
-      <!-- <h6 class="my-4"><strong>Highest Current Bid:</strong> £<%#= t.amount %></h6> -->
-      <%# total = t.amount %>
-    <%# end %>
-      <% if @car.transactions.any? %>
-        <h6 class="my-4"><strong>Highest Current Bid:</strong> £<%= @car.transactions.last.amount %></h6>
-      <% end %>
-      <% if current_user == @car.user %>
-        <%= link_to "Accept the bid", accept_bid_car_path(@car), method: :patch %>
-      <% end %>
-      <%= @car.created_at.strftime("Created on %d/%m/%Y") %>
-        <h6> <%= ((Time.now - @car.created_at + 3600)/86400).round %>  days since the car was created </h6>
-      <% if @car.transactions.any? %>
-        <% if @car.transactions.last.status == "Accepted" %>
-          <span id="accepted-status">Status: Accepted</span>
+      <div class="create-a-bid-div border col-sm-12 p-3 m-3">
+        <h4>Create a bid on this car</h4>
+        <% @car.transactions.last(1).each do |t| %>
+          <h6 class="my-4"><strong>Highest Current Bid:</strong> £<%= t.amount %></h6>
+          <% total = t.amount %>
+        <% end %>
+          <% if @car.transactions.any? %>
+            <h6 class="my-4"><strong>Highest Current Bid:</strong> £<%= @car.transactions.last.amount %></h6>
+          <% end %>
+          <% if current_user == @car.user %>
+            <%= link_to "Accept the bid", accept_bid_car_path(@car), method: :patch %>
+          <% end %>
+          <%= @car.created_at.strftime("Created on %d/%m/%Y") %>
+            <h6> <%= ((Time.now - @car.created_at + 3600)/86400).round %>  days since the car was created </h6>
+          <% if @car.transactions.any? %>
+            <% if @car.transactions.last.status == "Accepted" %>
+              <span id="accepted-status">Status: Accepted</span>
+            <% else %>
+              <span id="pending-status">Status: Still Pending</span>
+            <% end %>
+          <% end %>
+
+        <% if @car.transactions.any? %>
+          <% if @car.transactions.last.status == "Pending" || @car.transactions.last.status == nil %>
+            <%= simple_form_for [@car, @transaction] do |f| %>
+              <%= f.input :amount, input_html: {min: (@car.price || (@car.transactions.last.amount if @car.transactions.any?)) , value: (@car.transactions.last.amount if @car.transactions.any?) } %>
+              <%= f.submit "create bid" %>
+            <% end %>
+          <% end %>
         <% else %>
-          <span id="pending-status">Status: Still Pending</span>
+            <%= simple_form_for [@car, @transaction] do |f| %>
+              <%= f.input :amount, input_html: {min: @car.price , value: @car.price } %>
+              <%= f.submit "create bid", class: 'btn btn-main' %>
+            <% end %>
         <% end %>
-      <% end %>
+      </div>
+    </div> <!--change this to see column changes-->
 
-    <% if @car.transactions.any? %>
-      <% if @car.transactions.last.status == "Pending" || @car.transactions.last.status == nil %>
-        <%= simple_form_for [@car, @transaction] do |f| %>
-          <%= f.input :amount, input_html: {min: (@car.price || (@car.transactions.last.amount if @car.transactions.any?)) , value: (@car.transactions.last.amount if @car.transactions.any?) } %>
-          <%= f.submit "create bid" %>
-        <% end %>
-      <% end %>
-    <% else %>
-        <%= simple_form_for [@car, @transaction] do |f| %>
-          <%= f.input :amount, input_html: {min: @car.price , value: @car.price } %>
-          <%= f.submit "create bid", class: 'btn btn-main' %>
-        <% end %>
-    <% end %>
+    <div class="col-4 mt-2">
+      <div class="show_page_column">
+        <div class="car_show_details mb-5">
+          <h2><strong><%= @car.make %> <%=@car.model %></strong></h2>
+          <h4><%= @car.year %></h4> <h4><%= @car.registration %></h4>
+          <h2>£<%= @min %></h2>
+        </div>
+        <div class="col-12 mb-5">
+          <h4>Current finance provider</h4>
+          <%= @car.finance %>
+        </div>
+        <div class="col-12">
+          <div class="car-overview-showpg ">
+            <h4>Overview</h4>
+            <div class="car-specifications">
+              <ul class="row list-design">
+                <li class="p-1 m-1">
+                  <h5><i class="fas fa-tachometer-alt show-icons  "></i><%= @car.mileage %></h5>
+                </li>
+                <li class="p-1 m-1">
+                  <h5><%= image_tag "car-engine-incon.svg", class: "show-icons" %><%= @car.engine_size %>L</h5>
+                </li>
+                <li class="p-1 m-1">
+                  <h5><i class="fas fa-gas-pump show-icons "></i><%= @car.fuel_type %></h5>
+                </li>
+              </ul>
+               <ul class="row list-design">
+                <li class="p-1 m-1">
+                  <h5><%= image_tag "car-transmission.svg", class: "show-icons" %><%= @car.transmission %></h5>
+                </li>
+                <li class="p-1 m-1">
+                  <h5><i class="fas fa-tint show-icon-tint"></i><%= @car.colour %></h5>
+                </li>
+                <li class="p-1 m-1">
+                  <% hpi_check = @car.hpi_clear == "Yes" ? "fas fa-check-circle" : "fas fa-times-circle" %>
+                  <h5><i class="<%= hpi_check %> show-icons"></i>HPI clear</h5>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 
-<div class="similar-cars  mt-4 mb-4">
+<div class="similar-cars mt-4 mb-4">
   <div class=" container p-3">
-    <h2>Similar cars based on the make you chose</h2>
+    <h2>View similar cars based on the make you chose</h2>
   </div>
   <div class="row justify-content-center">
     <% @similar_cars.each do |car| %>

@@ -1,6 +1,12 @@
-.car_show_details {
-  text-align: center;
+// .car_show_details {
+//   text-align: center;
+// }
+
+.show_page_column{
+  position: sticky;
+  top: 80px;
 }
+
 .car_show_image{
   text-align:center;
   width:100%;
@@ -19,6 +25,7 @@
   height: 96px;
   cursor: pointer;
   margin-right: 3px;
+  margin-top: 2px;
 }
 
 #accepted-status {
@@ -47,6 +54,7 @@
 
 .list-design {
   list-style: none;
+  padding-left: 8px;
 }
 
 .similar-cars {
