@@ -26,7 +26,7 @@
               <%= f.input :year, :collection => @car_year_form, prompt: 'Select a year', error: 'Year is mandatory, please specify one' %>
             </div>
             <div class="col">
-              <%= f.input :mileage, label: "Mileage", placeholder: 'e.g. 1998', error: 'Mileage is mandatory' %>
+              <%= f.input :mileage, label: "Mileage", placeholder: '15000', error: 'Mileage is mandatory' %>
             </div>
             <div class="col">
               <%= f.input :registration, label: "Registration", placeholder: 'e.g. NO12 MUI', error: 'Registration is mandatory' %>
@@ -68,7 +68,8 @@
               <%= f.input :reference, label: 'Car PCP reference number', placeholder: 'e.g *********', error: 'Refernce number is mandatory, please specify one' %>
             </div>
             <div class="col">
-            <%= f.association :finance_provider, label: "Finance Provider", error: 'This is mandatory, please specify one' %>            </div>
+            <%= f.association :finance_provider, label: "Finance Provider", error: 'This is mandatory, please specify one' %>
+            </div>
           </div>
 
           <div class="row">
