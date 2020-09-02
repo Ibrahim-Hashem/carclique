@@ -35,6 +35,10 @@
       <div class="col-4">
         <%= f.input :colour, collection: @cars_all.map(&:colour).uniq%>
       </div>
+      <div></div>
+      <div>
+        <%= link_to 'View All', cars_path, class: 'btn btn-secondary m-3 d-flex justify-content-center' %>
+      </div>
     </div>
     <% end %>
   </div>
@@ -44,7 +48,7 @@
     <% @cars.each do |car| %>
       <div class="col-4">
         <%= link_to car_path(car), class: 'card-link' do %>
-        <div class="card-index-new">
+        <div class="card-index-new mt-5">
           <div class="card-index-image" style="background-image: url(<%= car.photos.first ? (cl_image_path car.photos.first.key, crop: :fill) : ""  %>)">
           </div>
           <div class="card-index-text">
@@ -63,7 +67,8 @@
               <div class="type">RRP from</div>
             </div>
             <div class="stat">
-              <div class="value"><%= car.mileage %></div>
+              <div class="value"><%= car.mileage.present? ? car.mileage : 0 %></div>
+
               <div class="type">Miles</div>
             </div>
           </div>

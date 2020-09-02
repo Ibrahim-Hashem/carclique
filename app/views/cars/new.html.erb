@@ -11,6 +11,7 @@
           <%= simple_form_for @car do |f| %>
           <% @car_makes_form = ["BMW", "AUDI", "MERCEDES", "ABARTH", "ALFA ROMEO", "ASTON MARTIN"] %>
           <% @car_year_form = (2000..2020).to_a %>
+          <div class = "rowfont">
           <div class="row">
             <div class="col">
               <%= f.input :make, :collection => @car_makes_form, prompt: 'Select a make', error: 'Make is mandatory, please specify one' %>
@@ -67,8 +68,7 @@
               <%= f.input :reference, label: 'Car PCP reference number', placeholder: 'e.g *********', error: 'Refernce number is mandatory, please specify one' %>
             </div>
             <div class="col">
-              <%= f.input :finance, label: "Finance Provider", placeholder: 'Name and Address', error: 'This is mandatory, please specify one' %>
-            </div>
+            <%= f.association :finance_provider, label: "Finance Provider", error: 'This is mandatory, please specify one' %>            </div>
           </div>
 
           <div class="row">
@@ -85,6 +85,7 @@
             </div>
           </div>
       </div>
+    </div>
       <!-- form ends -->
     </div>
   </div>
