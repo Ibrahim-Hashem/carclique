@@ -1,7 +1,3 @@
-// .car_show_details {
-//   text-align: center;
-// }
-
 .photo-gallery {
   margin-top: 100px;
 }
@@ -9,7 +5,7 @@
 .car-specs {
   margin-top: 100px;
   position: sticky;
-  top: 74px;
+  top: 70px;
   align-self: flex-start;
   border-left: 1px solid lightgrey;
   height: 70vh;
@@ -17,10 +13,9 @@
   justify-content: space-between;
   flex-direction: column;
   margin-bottom: 40px;
-}
+ }
 
-
-.car_show_image {
+.main-gallery-image {
   text-align:center;
   width:100%;
 }
@@ -44,6 +39,8 @@
 .list-design {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
+  list-style: none;
+  padding-left: 8px;
 }
 
 #accepted-status {
@@ -66,19 +63,18 @@
   box-shadow: 1px 0px 100px 20px rgba(0, 0, 0, 0.1);
 }
 
-.margin-for-container {
-  margin-top: 80px;
-}
-
-.list-design {
-  list-style: none;
-  padding-left: 8px;
-}
-
-.similar-cars {
-  background-color: #F7F7F5 ;
-}
-
 .rowfont {
 font-family: montserrat;
 }
+
+.bidding-box {
+ border-top: 1px solid lightgrey;
+ margin-top: 30px;
+ padding-top: 30px;
+}
+
+
+
+
+
+
