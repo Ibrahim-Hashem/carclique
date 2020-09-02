@@ -4,22 +4,25 @@
 }
 .main-container{
   margin-top: 64px;
+  width:70%;
 }
 
 #container-currentBids{
-  background-color: #888888;
+
   border-radius: 3px;
 
 }
 #container-currentMyLists{
   background-color: white;
   border-radius: 3px;
-  padding:64px;
+  padding:50px;
 }
 
 .card-product {
   overflow: hidden;
-  height: 320px;
+  // height: 320px;
+  margin: 0 auto;
+  width:70%;
   background: white;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   display: flex;
@@ -35,7 +38,7 @@
 }
 
 .card-product h2 {
-  font-size: 16px;
+  // font-size: 16px;
   font-weight: bold;
   margin: 0;
 }
@@ -59,9 +62,16 @@ text-align: center;
 }
 
 .winning_bid{
-  box-shadow: 0px 0px 20px #5cb85c;
+  box-shadow: 0px 0px 20px blue;
 }
 
 .losing_bid{
-  box-shadow: 0px 0px 10px red;
+  box-shadow: 0px 0px 20px red;
+}
+
+.text h2 {
+  font-size: 24px;
+}
+.texttwo h2{
+  font-size:16px;
 }
