@@ -25,24 +25,24 @@
 <div class="homepage-container">
   <div class="sellersinfo">
     <br><br>
-    <h1>Are you a Seller?</h1>
+    <h1>Are you a <strong>Seller?</strong></h1>
     <br><br>
     <div class="row justify-content-center">
       <div class="col-4">
         <div class="cards-process m-3 p-3 bg-transparent">
-          <i class="fas fa-laptop fa-10x" style="color:white;"></i>
+          <i class="fas fa-laptop fa-8x" style="color:white;"></i>
           <h2> Upload your financed car </h2>
         </div>
       </div>
       <div class="col-4">
         <div class="cards-process m-3 p-3 bg-transparent">
-          <i class="fas fa-hand-holding-usd fa-10x" style="color:white;"></i>
+          <i class="fas fa-hand-holding-usd fa-8x" style="color:white;"></i>
           <h2> List your financed car for its remaning debt</h2>
         </div>
       </div>
       <div class="col-4">
         <div class="cards-process m-3 p-3 bg-transparent">
-          <i class="fas fa-file-invoice-dollar fa-10x" style="color:white;"></i>
+          <i class="fas fa-file-invoice-dollar fa-8x" style="color:white;"></i>
           <h2>Be debt free and get rid of your PCP</h2>
         </div>
       </div>
@@ -51,24 +51,24 @@
 
 <div class="buyersinfo">
   <br><br>
-  <h1>Are you a Buyer?</h1>
+  <h1>Are you a <strong>Buyer?</strong></h1>
   <br><br>
   <div class="row justify-content-center">
     <div class="col-4">
       <div class="cards-process m-3 bg-transparent">
-        <i class="fas fa-search fa-10x"></i>
+        <i class="fas fa-search fa-8x"></i>
        <h2> Choose your car </h2>
       </div>
     </div>
     <div class="col-4">
       <div class="cards-process m-3 bg-transparent">
-        <i class="fas fa-comment-dollar fa-10x"></i>
+        <i class="fas fa-comment-dollar fa-8x"></i>
        <h2> Bid..then purchase your dream car</h2>
       </div>
     </div>
     <div class="col-4">
       <div class="cards-process m-3 bg-transparent">
-        <i class="fas fa-car-side fa-10x"></i>
+        <i class="fas fa-car-side fa-8x"></i>
         <h2>Grab yourself a bargain and drive away with your new car</h2>
         </div>
       </div>
@@ -77,16 +77,17 @@
 </div>
 
 <div class="homepage-container m-5 bg-white">
-  <h2>Our Hottest Deals</h2>
+  <h1>Our Hottest Deals</h1>
+  <br><br>
   <div class="container">
     <div class="row justify-content-center">
       <% @deals.each do |car| %>
         <div class="col-4">
           <%= link_to car_path(car), class: 'card-link' do %>
             <div class="card-index-new">
-            
+
               <div class="card-index-image" style="background-image: url(<%= car.photos.first ? (cl_image_path car.photos.first.key, crop: :fill) : ""  %>)">
-                
+
               </div>
               <div class="card-index-text">
                 <span class="date">4 days ago</span>
@@ -107,10 +108,10 @@
                   <div class="value"><%= car.mileage %></div>
                   <div class="type">Miles</div>
                 </div>
-              </div> 
+              </div>
             </div>
           <% end %>
-        </div>     
+        </div>
       <% end %>
     </div>
   </div>
@@ -119,7 +120,7 @@
 <div class="youtube m-5">
   <h1>Check us out on Youtube!</h1>
   <br><br>
-  <iframe src="https://www.youtube.com/embed/3wSwUxZhiyM" width="1060" height="615" frameborder="0"></iframe>
+  <iframe src="https://www.youtube.com/embed/3wSwUxZhiyM" width="1060" height="515" frameborder="0"></iframe>
 </div>
 
 
