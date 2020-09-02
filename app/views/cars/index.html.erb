@@ -63,8 +63,8 @@
               <div class="type">RRP from</div>
             </div>
             <div class="stat">
-              <!-- <div class="value"><%= car.mileage %></div> -->
-              <%= raise %>
+              <div class="value"><%= car.mileage.present? ? car.mileage : 0 %></div>
+
               <div class="type">Miles</div>
             </div>
           </div>
