@@ -7,6 +7,7 @@ file = URI.open('https://images.unsplash.com/photo-1553440569-bcc63803a83d?ixlib
 #   Character.create(name: 'Luke', movie: movies.first)
 user = User.create!(email: 'test@test.com', password: "123456", last_name: 'raheem', first_name: 'mohammed', address: 'address_test')
 finance_provider = FinanceProvider.create(name: 'lloyds', address: 'provider_test')
+finance_providers = [finance_provider,]
 car1 = Car.new(make: 'bmw', model: 'M2', engine_size: 2, user: user, finance_provider: finance_provider, price: 20000, fuel_type: 'petrol', transmission: 'automatic', colour: 'blue', year: 2016)
 car1.photos.attach(io: file, filename: 'nes.png', content_type: 'image/png')
 car1.save
