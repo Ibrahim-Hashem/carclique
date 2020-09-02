@@ -1,202 +1,89 @@
-<div class="container margin-for-container">
-  <div class="row ">
-    <div class="left-side col-sm-8 p-3">
-    <div class="col-sm-12 p-3">
-      <div>
-        <% @min = @car.transactions.present? ? @car.transactions.last.amount : @car.price %>
-        <% if @car.photos.count != 0 %>
-          <%= cl_image_tag @car.photos.first.key, class: "car_show_image", crop: :fill %>
-          <div class="scroll-row">    
-              <% @car.photos.each do |photo| %>
-                <%= cl_image_tag photo.key, class: "scroll_image", crop: :fill %>
-              <% end %>           
-          </div>
-        <% end %>
-         <div class=""><p>(Scroll to see more)</p></div>
-      </div>
-    </div> 
-
-      <div class="col-sm-12">
-        <div class="car-description-showpg mt-2">
-          <h4>Description</h4>
-          <p><%= @car.description %>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Excepturi optio eveniet commodi eligendi rerum vel illum beatae expedita dolore sequi quod cumque iusto, autem harum, distinctio quidem deleniti inventore eum? Lorem ipsum, dolor sit amet consectetur adipisicing, elit. Modi ipsa placeat, reiciendis porro quo fugiat dicta, debitis, vel iste nihil inventore laborum ratione libero, nesciunt tenetur? Repellat sit tenetur repudiandae. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Corporis odio cumque maiores quisquam dolor corrupti accusamus reprehenderit nihil nesciunt optio perspiciatis fugit eligendi, iusto eveniet laudantium libero eius. Ducimus, ad. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Labore, odio, ex. Deleniti velit iure, error porro quis excepturi ea quam quasi natus dolorum odio voluptate est adipisci atque corporis esse.</p>
-
-        <h4>Current finance provider</h4>
-        <%= @car.finance_provider %>
-      </div>
-    </div>
-  </div>
-
-  <div class="row m-3">
-    <div class="col-sm-7">
-      <div class="car-overview-showpg ">
-        <h4>Overview</h4>
-        <div class="car-specifications">
-          <ul class="row list-design">
-            <li class="mr-4">
-              <h5><i class="fas fa-tachometer-alt "></i><%= @car.mileage %></h5>
-            </li>
-            <li class="mr-4">
-              <h5><%= image_tag "car-engine-incon.svg", class: "show-icons" %><%= @car.engine_size %>L</h5>
-            </li>
-            <li class="mr-4">
-              <h5><i class="fas fa-gas-pump show-icons "></i><%= @car.fuel_type %></h5>
-            </li>
-            <li class="mr-4">
-              <h5><%= image_tag "car-transmission.svg", class: "show-icons" %><%= @car.transmission %></h5>
-            </li>
-          </ul>
-           <ul class="row list-design">
-            <li class="mr-4">
-              <h5><i class="fas fa-tint show-icons-tint"></i><%= @car.colour %></h5>
-            </li>
-            <li class="mr-4">
-              <% hpi_check = @car.hpi_clear == "Yes" ? "fas fa-check-circle" : "fas fa-times-circle" %>
-              <h5><i class="<%= hpi_check %> show-icons"></i>HPI clear</h5>
-            </li>
-          </ul>
-
-        </div>
-      </div>
-      <div class="col-sm-12">
-        <h4>Car address</h4>
-        <div class="car-address justify-content-center mt-3 mb-3">
-          <%= @car.address %>
-        </div>
-        <div id="map"
-          style="width: 100%; height: 350px; box-shadow: 0 0 15px rgba(0,0,0,0.2); margin: 0 auto; margin-bottom: 40px;"
-          data-markers="<%= @markers.to_json %>"
-          data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
-        </div>
-      </div>
-     <!-- </div> --> <!-- change this to see changes made by column-->
-
-      <div class="create-a-bid-div border col-sm-12 p-3 m-3">
-        <h4>Create a bid on this car</h4>
-        <% @car.transactions.last(1).each do |t| %>
-          <h6 class="my-4"><strong>Highest Current Bid:</strong> £<%= t.amount %></h6>
-          <% total = t.amount %>
-        <% end %>
-          <% if @car.transactions.any? %>
-            <h6 class="my-4"><strong>Highest Current Bid:</strong> £<%= @car.transactions.last.amount %></h6>
+<div class="container">
+  <div class="row">
+    <div class="col-8">
+      <% if @car.photos.any? %>
+        <%= cl_image_tag @car.photos.first.key, class: "car_show_image", crop: :fill %>
+        <div class="scroll-row">
+          <% @car.photos.each do |photo| %>
+            <%= cl_image_tag photo.key, class: "scroll_image", crop: :fill %>
           <% end %>
-          <% if current_user == @car.user %>
-            <%= link_to "Accept the bid", accept_bid_car_path(@car), method: :patch %>
-          <% end %>
-          <%= @car.created_at.strftime("Created on %d/%m/%Y") %>
-            <h6> <%= ((Time.now - @car.created_at + 3600)/86400).round %>  days since the car was created </h6>
-          <% if @car.transactions.any? %>
-            <% if @car.transactions.last.status == "Accepted" %>
-              <span id="accepted-status">Status: Accepted</span>
-            <% else %>
-              <span id="pending-status">Status: Still Pending</span>
-            <% end %>
-          <% end %>
-
-  <div class="create-a-bid-div border p-3">
-    <h4>Create a bid on this car</h4>
+        </div>
+      <% end %>
+      <p>(Scroll to see more)</p>
+      <h4>Description</h4>
+      <p><%= @car.description %></p>
+      <h4>Car address</h4>
+      <p><%= @car.address %></p>
+      <div id="map"
+        style="width: 100%; height: 350px; box-shadow: 0 0 15px rgba(0,0,0,0.2); margin: 0 auto; margin-bottom: 40px;"
+        data-markers="<%= @markers.to_json %>"
+        data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+      </div>
+      <h4>Create a bid on this car</h4>
       <% if @car.transactions.any? %>
         <h6 class="my-4"><strong>Highest Current Bid:</strong> £<%= @car.transactions.last.amount %></h6>
+        <span id="accepted-status">Status: <%= @car.transactions.last.status %></span>
       <% end %>
-      <% if current_user == @car.user && @car.transactions.last %>
+      <%= simple_form_for [@car, @transaction] do |f| %>
+        <%= f.input :amount, input_html: {min: @car.price , value: @car.price } %>
+        <%= f.submit "create bid", class: 'btn btn-main' %>
+      <% end %>
+      <% if current_user == @car.user && car.transactions.any? %>
         <%= link_to "Accept the bid", accept_bid_car_path(@car), method: :patch %>
       <% end %>
-      <%= @car.created_at.strftime("Created on %d/%m/%Y") %>
-        <h6> <%= ((Time.now - @car.created_at + 3600)/86400).round %>  days since the car was created </h6>
-      <% if @car.transactions.any? %>
-        <% if @car.transactions.last.status == "Accepted" %>
-          <span id="accepted-status">Status: Accepted</span>
-
-        <% if @car.transactions.any? %>
-          <% if @car.transactions.last.status == "Pending" || @car.transactions.last.status == nil %>
-            <%= simple_form_for [@car, @transaction] do |f| %>
-              <%= f.input :amount, input_html: {min: (@car.price || (@car.transactions.last.amount if @car.transactions.any?)) , value: (@car.transactions.last.amount if @car.transactions.any?) } %>
-              <%= f.submit "create bid" %>
-            <% end %>
-          <% end %>
-
-        <% else %>
-            <%= simple_form_for [@car, @transaction] do |f| %>
-              <%= f.input :amount, input_html: {min: @car.price , value: @car.price } %>
-              <%= f.submit "create bid", class: 'btn btn-main' %>
-            <% end %>
-        <% end %>
+      <h6><%= ((Time.now - @car.created_at + 3600)/86400).round %>  days since the car was created </h6>
+    </div>
+    <div class="col-4">
+      <h4>Overview</h4>
+      <div class="car-specifications">
+        <ul class="row list-design">
+          <li class="mr-4">
+            <h5><i class="fas fa-tachometer-alt "></i><%= @car.mileage %></h5>
+          </li>
+          <li class="mr-4">
+            <h5><%= image_tag "car-engine-incon.svg", class: "show-icons" %><%= @car.engine_size %>L</h5>
+          </li>
+          <li class="mr-4">
+            <h5><i class="fas fa-gas-pump show-icons "></i><%= @car.fuel_type %></h5>
+          </li>
+          <li class="mr-4">
+            <h5><%= image_tag "car-transmission.svg", class: "show-icons" %><%= @car.transmission %></h5>
+          </li>
+        </ul>
+         <ul class="row list-design">
+          <li class="mr-4">
+            <h5><i class="fas fa-tint show-icons-tint"></i><%= @car.colour %></h5>
+          </li>
+          <li class="mr-4">
+            <% hpi_check = @car.hpi_clear == "Yes" ? "fas fa-check-circle" : "fas fa-times-circle" %>
+            <h5><i class="<%= hpi_check %> show-icons"></i>HPI clear</h5>
+          </li>
+        </ul>
       </div>
-    </div> <!--change this to see column changes-->
-
-    <div class="col-4 mt-2">
-      <div class="show_page_column">
-        <div class="car_show_details mb-5">
-          <h2><strong><%= @car.make %> <%=@car.model %></strong></h2>
-          <h4><%= @car.year %></h4> <h4><%= @car.registration %></h4>
-          <h2>£<%= @min %></h2>
-        </div>
-        <div class="col-12 mb-5">
-          <h4>Current finance provider</h4>
-          <%= @car.finance %>
-        </div>
-        <div class="col-12">
-          <div class="car-overview-showpg ">
-            <h4>Overview</h4>
-            <div class="car-specifications">
-              <ul class="row list-design">
-                <li class="p-1 m-1">
-                  <h5><i class="fas fa-tachometer-alt show-icons  "></i><%= @car.mileage %></h5>
-                </li>
-                <li class="p-1 m-1">
-                  <h5><%= image_tag "car-engine-incon.svg", class: "show-icons" %><%= @car.engine_size %>L</h5>
-                </li>
-                <li class="p-1 m-1">
-                  <h5><i class="fas fa-gas-pump show-icons "></i><%= @car.fuel_type %></h5>
-                </li>
-              </ul>
-               <ul class="row list-design">
-                <li class="p-1 m-1">
-                  <h5><%= image_tag "car-transmission.svg", class: "show-icons" %><%= @car.transmission %></h5>
-                </li>
-                <li class="p-1 m-1">
-                  <h5><i class="fas fa-tint show-icon-tint"></i><%= @car.colour %></h5>
-                </li>
-                <li class="p-1 m-1">
-                  <% hpi_check = @car.hpi_clear == "Yes" ? "fas fa-check-circle" : "fas fa-times-circle" %>
-                  <h5><i class="<%= hpi_check %> show-icons"></i>HPI clear</h5>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
+      <h4>Current finance provider</h4>
+      <%= @car.finance_provider %>
+      <h2><strong><%= @car.make %> <%=@car.model %></strong></h2>
+      <h4><%= @car.year %> | <%= @car.registration %></h4>
+      <% @min = @car.transactions.present? ? @car.transactions.last.amount : @car.price %>
+      <h2>£<%= @min %></h2>
     </div>
   </div>
 </div>
-
-<div class="similar-cars mt-4 mb-4">
-  <div class=" container p-3">
+<div class="bg-light">
+  <div class="container">
     <h2>View similar cars based on the make you chose</h2>
-  </div>
-  <div class="row justify-content-center">
-    <% @similar_cars.each do |car| %>
-      <div class="col-4 d-flex justify-content-center">
+    <div class="row">
+      <% @similar_cars.each do |car| %>
+        <div class="col-4">
           <%= link_to car_path(car), class: 'card-link' do %>
-          <div class="m-3 card">
-            <% if car.photos.first %>
-            <div class="card-image">
-                <%= cl_image_tag car.photos.first.key, crop: :fill %>
-            </div>
-            <% end %>
-            <div class="p-3 card-info">
-              <h5><%= car.make %> <strong><%= car.model %></strong> </h5>
-               <h5>£ <%= car.price %></h5>
-              <%= car.mileage %>
-            </div>
-          </div>
-        <% end %>
-      </div>
-    <% end %>
+            <!-- TODO -->
+            <%= car.make %>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
   </div>
 </div>
-
-
 <script>
   document.querySelectorAll(".scroll_image").forEach((e) => {
     e.addEventListener("click", (event) => {
@@ -204,5 +91,6 @@
     })
   })
 </script>
+(edited)
 
 
