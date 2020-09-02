@@ -1,4 +1,4 @@
-<div class="navbar navbar-expand-sm navbar-light navbar-lewagon <%="navbar-lewagon-bg" unless controller_name == "pages"%>">
+<div class="navbar navbar-expand-sm navbar-light navbar-lewagon d-flex <%="navbar-lewagon-bg" unless controller_name == "pages"%>">
   <div>
     <div class="title">
     <%= link_to "#", class: "navbar-brand" do %>
@@ -10,7 +10,7 @@
     </button>
   </div>
 
-  <div class="navbar-headings-center">
+  <div class="navbar-headings-center text-center">
     <div class="nav-item">
       <%= link_to "Home", root_path, class: "nav-link" %>
     </div>
@@ -26,11 +26,11 @@
     </div>
   </div>
 
+
   <% if user_signed_in? %>
     <div class="dropdown">
       <%= image_tag "menu.png", class: "menu dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
       <div class="dropdown-content">
-
           <%= link_to "My Profile", user_path(current_user), class: "dropdown-item" %>
           <%= link_to "Log Out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
       </div>
@@ -42,4 +42,5 @@
       <% end %>
     </div>
   <% end  %>
+
 </div>
