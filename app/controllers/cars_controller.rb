@@ -44,7 +44,7 @@ class CarsController < ApplicationController
     @user = current_user
   end
 
- def create
+  def create
     @car = Car.new(car_params)
     @car.user = current_user
     @markers = [ {lat: @car.user.latitude,

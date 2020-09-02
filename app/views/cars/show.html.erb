@@ -1,18 +1,20 @@
 <div class="container margin-for-container">
-  <div class="row">
-    <div class="left-side col-sm-8">
-      <div class="col-sm-12 p-3">
-        <div>
-          <% @min = @car.transactions.present? ? @car.transactions.last.amount : @car.price %>
-            <%= cl_image_tag @car.photos.first.key, class: "car_show_image", crop: :fill %>
-            <div class="scroll-row">
+  <div class="row ">
+    <div class="left-side col-sm-8 p-3">
+    <div class="col-sm-12 p-3">
+      <div>
+        <% @min = @car.transactions.present? ? @car.transactions.last.amount : @car.price %>
+        <% if @car.photos.count != 0 %>
+          <%= cl_image_tag @car.photos.first.key, class: "car_show_image", crop: :fill %>
+          <div class="scroll-row">    
               <% @car.photos.each do |photo| %>
                 <%= cl_image_tag photo.key, class: "scroll_image", crop: :fill %>
-              <% end %>
-            </div>
-            <div class=""><p>(Scroll to see more)</p></div>
-        </div>
+              <% end %>           
+          </div>
+        <% end %>
+         <div class=""><p>(Scroll to see more)</p></div>
       </div>
+    </div> 
 
       <div class="col-sm-12">
         <div class="car-description-showpg mt-2">
@@ -91,6 +93,20 @@
             <% end %>
           <% end %>
 
+  <div class="create-a-bid-div border p-3">
+    <h4>Create a bid on this car</h4>
+      <% if @car.transactions.any? %>
+        <h6 class="my-4"><strong>Highest Current Bid:</strong> £<%= @car.transactions.last.amount %></h6>
+      <% end %>
+      <% if current_user == @car.user && @car.transactions.last %>
+        <%= link_to "Accept the bid", accept_bid_car_path(@car), method: :patch %>
+      <% end %>
+      <%= @car.created_at.strftime("Created on %d/%m/%Y") %>
+        <h6> <%= ((Time.now - @car.created_at + 3600)/86400).round %>  days since the car was created </h6>
+      <% if @car.transactions.any? %>
+        <% if @car.transactions.last.status == "Accepted" %>
+          <span id="accepted-status">Status: Accepted</span>
+
         <% if @car.transactions.any? %>
           <% if @car.transactions.last.status == "Pending" || @car.transactions.last.status == nil %>
             <%= simple_form_for [@car, @transaction] do |f| %>
@@ -98,6 +114,7 @@
               <%= f.submit "create bid" %>
             <% end %>
           <% end %>
+
         <% else %>
             <%= simple_form_for [@car, @transaction] do |f| %>
               <%= f.input :amount, input_html: {min: @car.price , value: @car.price } %>
