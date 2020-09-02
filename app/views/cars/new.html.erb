@@ -68,8 +68,7 @@
               <%= f.input :reference, label: 'Car PCP reference number', placeholder: 'e.g *********', error: 'Refernce number is mandatory, please specify one' %>
             </div>
             <div class="col">
-              <%= f.input :finance_provider, label: "Finance Provider", placeholder: 'Name and Address', error: 'This is mandatory, please specify one' %>
-            </div>
+            <%= f.association :finance_provider, label: "Finance Provider", error: 'This is mandatory, please specify one' %>            </div>
           </div>
 
           <div class="row">
