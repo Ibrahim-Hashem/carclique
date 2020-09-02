@@ -17,13 +17,13 @@
           <div class="card-index-show mt-5">
             <div class="card-index-image" style="background-image: url(<%= car.photos.first ? (cl_image_path car.photos.first.key, crop: :fill) : ""  %>)">
             </div>
-            <div class="card-index-text">
-              <span class="date">4 days ago</span>
+            <div class="card-index-text">            
+              <span class="date">Car was created <%= ((Time.now - car.created_at + 3600)/86400).round %> days ago </span>
               <h2> <%= car.make %>   <strong><%= car.model %></strong></h2>
               <div>
                 <% if car.transactions.any? %>
                   <% if car.transactions.last.status == "Accepted" %>
-                    <h5> Congatulations your car has been sold for £ <span><%= car.transactions.last.amount %></span></h5>
+                    <h5> Congratulations your car has been sold for £ <span><%= car.transactions.last.amount %></span></h5>
                   <% else %>
                     <h5>Pending bids</h5>
                   <% end %>

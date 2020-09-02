@@ -3,12 +3,14 @@
     <div class="col-sm-8 p-3">
       <div>
         <% @min = @car.transactions.present? ? @car.transactions.last.amount : @car.price %>
+        <% if @car.photos.count != 0 %>
           <%= cl_image_tag @car.photos.first.key, class: "car_show_image", crop: :fill %>
-          <div class="scroll-row">
-            <% @car.photos.each do |photo| %>
-              <%= cl_image_tag photo.key, class: "scroll_image", crop: :fill %>
-            <% end %>
+          <div class="scroll-row">    
+              <% @car.photos.each do |photo| %>
+                <%= cl_image_tag photo.key, class: "scroll_image", crop: :fill %>
+              <% end %>           
           </div>
+        <% end %>  
       </div>
     </div>
 
@@ -107,7 +109,7 @@
       <% if @car.transactions.any? %>
         <h6 class="my-4"><strong>Highest Current Bid:</strong> £<%= @car.transactions.last.amount %></h6>
       <% end %>
-      <% if current_user == @car.user %>
+      <% if current_user == @car.user && @car.transactions.last %>
         <%= link_to "Accept the bid", accept_bid_car_path(@car), method: :patch %>
       <% end %>
       <%= @car.created_at.strftime("Created on %d/%m/%Y") %>
