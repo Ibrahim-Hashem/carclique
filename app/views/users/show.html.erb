@@ -5,6 +5,7 @@
   <div class="row justify-content-center">
     <%= link_to 'Add a listing', new_car_path, class: "btn-main" %>
   </div>
+</div>
 
 
 <div class="container py-3" id="my-cars">
@@ -12,7 +13,8 @@
     <% @my_cars.each do |car| %>
       <div class="col-4">
         <%= link_to car_path(car), class: 'card-link' do %>
-          <div class="card-index-show">
+
+          <div class="card-index-show mt-5">
             <div class="card-index-image" style="background-image: url(<%= car.photos.first ? (cl_image_path car.photos.first.key, crop: :fill) : ""  %>)">
             </div>
             <div class="card-index-text">
@@ -29,30 +31,35 @@
                   <h5> Your car has not been sold </h5>
                 <% end %>
               </div>
-              <h5> <%= car.description %> </h5>
+                <h5> <%= car.description %> </h5>
             </div>
+
             <div class="card-index-stats">
               <div class="stat">
                 <div class="value"><%= car.year %></div>
                 <div class="type">Make</div>
               </div>
               <div class="stat border">
+                <div class="type">RRP from</div>
                 <div class="value"><%= number_to_currency(car.transactions.present? ? car.transactions.last.amount : car.price, unit: '£', precision: 0) %>
                 </div>
               </div>
-              <div class="type">RRP from</div>
               <div class="stat">
-              <div class="value"><%= car.mileage %></div>
-              <div class="type">Miles</div>
+                <div class="value"><%= car.mileage %></div>
+                <div class="type">Miles</div>
               </div>
             </div>
           </div>
-        <% end %>
-      </div>
-        <div class="d-flex justify-content-center">
-                <%#= link_to "Delete", car_path(car), class: "btn-main bg-delete", method: :delete, data: { confirm: "Are you sure?" } %>
-                <%#= link_to "Edit", edit_car_path(car), class: "btn-main" %>
+
+        <div class="btn-edit-delete">
+          <%= link_to "Delete", car_path(car), class: "btn-main bg-delete", method: :delete, data: { confirm: "Are you sure?" } %>
+          <%= link_to "Edit", edit_car_path(car), class: "btn-main" %>
         </div>
+
+        <% end %>
+
+
+      </div>
     <% end %>
   </div>
 </div>
