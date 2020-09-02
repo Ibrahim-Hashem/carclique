@@ -44,20 +44,19 @@ class CarsController < ApplicationController
     @user = current_user
   end
 
-  def create
+ def create
     @car = Car.new(car_params)
     @car.user = current_user
     @markers = [ {lat: @car.user.latitude,
-      lng: @car.user.longitude, image_url: helpers.asset_url('mapmarker.png')}]
-      @car.finance_provider = FinanceProvider.find_by(name: params[:car][:finance_provider])
-
-      if @car.save
-        flash[:success] = "Your Car Has been listed"
-        redirect_to user_path(current_user)
-      else
-        render new_car_path
-      end
+    lng: @car.user.longitude, image_url: helpers.asset_url('mapmarker.png')}]
+    @car.finance_provider = FinanceProvider.find(params[:car][:finance_provider_id].to_i)
+    if @car.save
+      flash[:success] = "Your Car Has been listed"
+      redirect_to user_path(current_user)
+    else
+      render new_car_path
     end
+  end
 
   def edit
     @car = Car.find(params[:id])
@@ -78,6 +77,6 @@ class CarsController < ApplicationController
   private
 
   def car_params
-    params.require(:car).permit(:make, :model, :registration, :year, :mileage, :price, :reference, :address, :description, :fuel_type, :transmission, :engine_size, :colour, :hpi_clear, photos: [])
+    params.require(:car).permit(:make, :model, :registration, :year, :mileage, :price, :reference, :address, :description, :fuel_type, :transmission, :finance_provider_id, :engine_size, :colour, :hpi_clear, photos: [])
   end
 end

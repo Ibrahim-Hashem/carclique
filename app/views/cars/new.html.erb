@@ -61,16 +61,14 @@
           <%= f.input :address, label: "Car Address", placeholder: 'e.g 138 Kingsland Road, London, E2 8DY' %>
         </div>
       </div>
-
       <div class="row">
         <div class="col">
           <%= f.input :reference, label: 'Car PCP reference number', placeholder: 'e.g *********', error: 'Refernce number is mandatory, please specify one' %>
         </div>
         <div class="col">
-          <%= f.input :finance_provider, label: "Finance Provider", placeholder: 'Name and Address', error: 'This is mandatory, please specify one' %>
+          <%= f.association :finance_provider, label: "Finance Provider", error: 'This is mandatory, please specify one' %>
         </div>
       </div>
-
       <div class="row">
         <div class="col">
           <%= f.input :description, label: "Description", placeholder: 'Provide a description of your car, including all features...' %>

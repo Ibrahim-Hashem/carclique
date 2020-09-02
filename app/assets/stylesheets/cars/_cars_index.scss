@@ -27,6 +27,21 @@
   cursor: pointer; 
 }
 
+.card-index-show{
+  display: grid;
+  // grid-template-columns: 300px;
+  grid-template-rows: 160px 300px 64px;
+  grid-template-areas: "image" "text" "stats";
+  font-family: jura;
+  border-radius: 18px;
+  background: white;
+  box-shadow: 5px 5px 15px rgba(0,0,0,0.9);
+  text-align: center;
+  width: 100%;
+  transition: 0.5s ease;
+  cursor: pointer; 
+}
+
 .card-index-image{
   grid-area: image;
   background-position: center;
