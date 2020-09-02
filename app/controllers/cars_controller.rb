@@ -49,7 +49,8 @@ class CarsController < ApplicationController
     @car.user = current_user
     @markers = [ {lat: @car.user.latitude,
         lng: @car.user.longitude, image_url: helpers.asset_url('mapmarker.png')}]
-    @car.finance_provider = FinanceProvider.find_by(name: params[:car][:finance_provider])
+    @car.finance_provider = FinanceProvider.find(params[:car][:finance_provider_id].to_i)
+    # raise
 
     if @car.save
       flash[:success] = "Your Car Has been listed"
@@ -79,6 +80,6 @@ class CarsController < ApplicationController
   private
 
   def car_params
-    params.require(:car).permit(:make, :model, :registration, :year, :mileage, :price, :reference, :address, :description, :fuel_type, :transmission, :engine_size, :colour, :hpi_clear, photos: [])
+    params.require(:car).permit(:make, :model, :registration, :year, :mileage, :price, :reference, :address, :description, :fuel_type, :transmission, :finance_provider_id, :engine_size, :colour, :hpi_clear, photos: [])
   end
 end
