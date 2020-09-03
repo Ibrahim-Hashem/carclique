@@ -17,7 +17,7 @@ class CarsController < ApplicationController
   def show
     @car = Car.find(params[:id])
     @transaction = Transaction.new
-    @similar_cars = Car.where(make: @car.make).first(6)
+    @similar_cars = Car.where(make: @car.make != @car).first(3)
     @markers =
     {
       lat: @car.latitude,
@@ -46,6 +46,7 @@ class CarsController < ApplicationController
 
   def create
     @car = Car.new(car_params)
+    @car.model.upcase!
     @car.user = current_user
     @markers = [ {lat: @car.user.latitude,
     lng: @car.user.longitude, image_url: helpers.asset_url('mapmarker.png')}]
