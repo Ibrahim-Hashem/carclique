@@ -18,7 +18,7 @@ class CarsController < ApplicationController
     @car = Car.find(params[:id])
     @min = @car.transactions.present? ? @car.transactions.last.amount : @car.price
     @transaction = Transaction.new
-    @similar_cars = Car.where(make: @car.make != @car).first(3)
+    @similar_cars = Car.where(["make = ? and id != ?", @car.make, @car.id]).limit(3)
     @markers =
     {
       lat: @car.latitude,
