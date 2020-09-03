@@ -23,20 +23,19 @@
               <% else %>
                 <span class="date"><%=((Time.now - car.created_at)/86400).ceil%> Days ago</span>
               <% end %>
-
               <h2> <%= car.make %>   <strong><%= car.model %></strong></h2>
               <div>
                 <% if car.transactions.any? %>
                   <% if car.transactions.last.status == "Accepted" %>
-                    <h5> Congratulations your car has been sold for £ <span><%= car.transactions.last.amount %></span></h5>
+                    <h5> Congratulations your car has been sold for <span><%= number_to_currency(car.transactions.present? ? car.transactions.last.amount : car.price, unit: '£', precision: 0) %></span></h5>
                   <% else %>
-                    <h5>Pending bids</h5>
+                    <h5>Bidding ongoing. The latest bid is <%= number_to_currency(car.transactions.present? ? car.transactions.last.amount : car.price, unit: '£', precision: 0)%></h5>
                   <% end %>
                 <% else %>
-                  <h5> Your car has not been sold </h5>
+                  <h5> Your car remains unsold - no bids received</h5>
                 <% end %>
               </div>
-                <h5> <%= car.description %> </h5>
+                <p> <%= car.address %> </p>
             </div>
 
             <div class="card-index-stats">
@@ -45,7 +44,7 @@
                 <div class="type">Make</div>
               </div>
               <div class="stat border">
-                <div class="type">RRP from</div>
+                <div class="type">Current Price</div>
                 <div class="value"><%= number_to_currency(car.transactions.present? ? car.transactions.last.amount : car.price, unit: '£', precision: 0) %>
                 </div>
               </div>
@@ -91,7 +90,8 @@
                   <% elsif t.user == current_user %>
                   <h2><strong>£<%= t.amount %></strong> - A previous bid by you</h2>
                   <% else %>
-                  <h2>£<%= t.amount %></h2>
+                  <h2><strong>£<%= t.amount %></strong> - Bid by another customer 
+                  </h2>
                   <% end %>
           <% end %>
         </div>
@@ -114,11 +114,12 @@
                     <% if i == 0 && t.user == current_user %>
                     <h2><strong>£<%= t.amount%></strong> - You Have The Highest Bid.</h2>
                     <% elsif i == 0 %>
-                    <h2><strong>£<%= t.amount%></strong> - Current highest bid</h2>
+                    <h2><strong>£<%= t.amount%></strong> - Bid by another customer</h2>
                     <% elsif t.user == current_user %>
-                    <h2><strong>£<%= t.amount %></strong> </h2>
+                    <h2><strong>£<%= t.amount %></strong> - A previous bid by you </h2>
                     <% else %>
-                    <h2>£<%= t.amount %></h2>
+                    <h2><strong>£<%= t.amount %></strong> - Bid by another customer 
+                  </h2>
                     <% end %>
             <% end %>
           </div>
