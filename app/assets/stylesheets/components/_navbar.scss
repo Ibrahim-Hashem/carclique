@@ -56,11 +56,12 @@ padding-bottom: 24px;
 
 .menu {
   width: 20px;
-  background-color: white;
+  // background-color: white;
+  // border-radius: 3px;
 }
 
 .menu:hover {
-  background-color: lightgrey;
+  // background-color: lightgrey;
 }
 
 .nav-link {
@@ -106,10 +107,18 @@ h2 {
   width: 204px;
   text-align: right;
   padding-right: 20px;
+  border-radius: 5px;
 }
 
-.dropdown-content a:hover {background-color: #ddd;}
+.dropdown-content a:hover {
+  background-color: #013365;
+  color:white;
+  border-radius: 5px;
+}
 
-.dropdown:hover .dropdown-content {display: block;}
+.dropdown:hover .dropdown-content {
+  display: block;
+  border-radius: 5px;
+}
 
 .dropdown:hover .dropbtn {background-color: #3e8e41;}
