@@ -20,7 +20,7 @@
               <div class="type">Make</div>
             </div>
             <div class="stat border">
-              <div class="type">RRP from</div>
+              <div class="type">Current Price</div>
               <div class="value"><%= number_to_currency(car.transactions.present? ? car.transactions.last.amount : car.price, unit: '£', precision: 0) %></div>
             </div>
             <div class="stat">
