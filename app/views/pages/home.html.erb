@@ -98,14 +98,14 @@
                 <h2> <%= car.make %>   <strong><%= car.model %></strong></h2>
                 <p> <%= car.address %> </p>
               </div>
-              
+
               <div class="card-index-stats">
                 <div class="stat">
                   <div class="value"><%= car.year %></div>
                   <div class="type">Make</div>
                 </div>
                 <div class="stat border">
-                  <div class="type">RRP from</div>
+                  <div class="type">Current Price</div>
                   <div class="value"><%= number_to_currency(car.transactions.present? ? car.transactions.last.amount : car.price, unit: '£', precision: 0) %></div>
                 </div>
                 <div class="stat">
@@ -113,7 +113,7 @@
                   <div class="type">Miles</div>
                 </div>
               </div>
-              
+
             </div>
           <% end %>
         </div>

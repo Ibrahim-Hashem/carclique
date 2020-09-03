@@ -28,7 +28,7 @@
         </div>
         <div class="mb-3">
           <h4>Current finance provider</h4>
-          <%= @car.finance_provider_id %>
+          <%= @car.finance_provider.name %>
         </div>
       <div class="mb-1 mt-2" >
         <h4>Overview</h4>
@@ -54,7 +54,7 @@
             <% hpi_check = @car.hpi_clear == "Yes" ? "fas fa-check-circle" : "fas fa-times-circle" %>
             <h6><i class="<%= hpi_check %> show-icons"></i>HPI clear</h6>
           </li>
-        </ul>             
+        </ul>
       <div class="bidding-box">
           <h4>Bid on this car</h4>
           <% if @car.transactions.any? %>
@@ -94,7 +94,7 @@
                   <span class="date"><%=((Time.now - car.created_at)/86400).ceil%> Day ago</span>
                   <% else %>
                   <span class="date"><%=((Time.now - car.created_at)/86400).ceil%> Days ago</span>
-                  <% end %>           
+                  <% end %>
                   <h2> <%= car.make %>   <strong><%= car.model %></strong></h2>
                   <p><%= car.address%></p>
                 </div>
@@ -104,7 +104,7 @@
                     <div class="type">Make</div>
                   </div>
                   <div class="stat border">
-                    <div class="type">RRP from</div>
+                    <div class="type">Current Price</div>
                     <div class="value"><%= number_to_currency(car.transactions.present? ? car.transactions.last.amount : car.price, unit: '£', precision: 0) %></div>
                   </div>
                   <div class="stat">
