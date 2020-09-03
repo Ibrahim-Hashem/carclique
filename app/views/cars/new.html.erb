@@ -17,7 +17,7 @@
               <%= f.input :make, :collection => @car_makes_form, prompt: 'Select a make', error: 'Make is mandatory, please specify one' %>
             </div>
             <div class="col">
-              <%= f.input :model, label: "Model", placeholder: 'Specify the car model', error: 'Model is mandatory, please specify one' %>
+              <%= f.input :model, label: "Model", placeholder: 'Specify the car model', error: 'Model is mandatory, please specify one', style: "text-transform:uppercase" %>
             </div>
           </div>
 

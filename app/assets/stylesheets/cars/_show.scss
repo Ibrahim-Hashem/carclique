@@ -8,11 +8,11 @@
   top: 70px;
   align-self: flex-start;
   border-left: 1px solid lightgrey;
-  height: 70vh;
+  min-height: 70vh;
   display: flex;
   justify-content: space-between;
   flex-direction: column;
-  margin-bottom: 40px;
+  margin-bottom: 32px;
  }
 
 .main-gallery-image {
@@ -68,9 +68,17 @@ font-family: montserrat;
 }
 
 .bidding-box {
- border-top: 1px solid lightgrey;
- margin-top: 30px;
- padding-top: 30px;
+ box-shadow: 0 0 15px rgba(0,0,0,0.2);
+ margin-top: 40px;
+ padding: 15px;
+ label {display: none;}
+ .btn-main {
+  width: 100%;
+ }
+}
+
+.p-tag {
+  color:grey;
 }
 
 
