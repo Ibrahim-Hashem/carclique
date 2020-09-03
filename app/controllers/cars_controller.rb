@@ -46,6 +46,7 @@ class CarsController < ApplicationController
 
   def create
     @car = Car.new(car_params)
+    @car.model.upcase!
     @car.user = current_user
     @markers = [ {lat: @car.user.latitude,
     lng: @car.user.longitude, image_url: helpers.asset_url('mapmarker.png')}]

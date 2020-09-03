@@ -2,33 +2,37 @@
   <div class="row ">
     <div class="col-8 photo-gallery">
       <% if @car.photos.any? %>
-        <%= cl_image_tag @car.photos.first.key, class: "car_show_image", crop: :fill %>
+        <%= cl_image_tag @car.photos.first.key, class: "main-gallery-image", crop: :fill %>
         <div class="scroll-row">
           <% @car.photos.each do |photo| %>
             <%= cl_image_tag photo.key, class: "scroll_image", crop: :fill %>
           <% end %>
         </div>
       <% end %>
-      <p>(Scroll to see more)</p>
-      <h4>Description</h4>
+      <h4 class="mt-4">Description</h4>
       <p><%= @car.description %></p>
-      <h4>Car address</h4>
+      <h4 class="mt-4">Car address</h4>
       <p><%= @car.address %></p>
       <div id="map"
-        style="width: 100%; height: 350px; box-shadow: 0 0 15px rgba(0,0,0,0.2); margin: 0 auto; margin-bottom: 40px;"
+        style="width: 100%; height: 350px; box-shadow: 0 0 15px rgba(0,0,0,0.1); margin: 0 auto; margin-bottom: 40px;"
         data-markers="<%= @markers.to_json %>"
         data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
       </div>
     </div>
     <div class="col-4 car-specs">
-      <div class="car-specifications">
-        <h2><strong><%= @car.make %> <%=@car.model %></strong></h2>
-        <h4><%= @car.year %> | <%= @car.registration %></h4>
-        <h2>£<%= @min %></h2>
-        <h4>Current finance provider</h4>
-        <%= @car.finance_provider_id %>
+       <div class="mb-3">
+          <h2><strong><%= @car.make %> <%=@car.model %></strong></h2>
+          <h3><%= @car.year %> | <%= @car.registration %></h3>
+          <% @min = @car.transactions.present? ? @car.transactions.last.amount : @car.price %>
+          <h2>£<%= number_with_precision(@min, :precision => 2, :delimiter => ',') %></h2>
+        </div>
+        <div class="mb-3">
+          <h4>Current finance provider</h4>
+          <%= @car.finance_provider_id %>
+        </div>
+      <div class="mb-1 mt-2" >
         <h4>Overview</h4>
-        <ul class="row list-design">
+        <ul class="row list-design ">
           <li class="">
             <h6><i class="fas fa-tachometer-alt show-icons"></i><%= @car.mileage %></h6>
           </li>
@@ -50,29 +54,30 @@
             <% hpi_check = @car.hpi_clear == "Yes" ? "fas fa-check-circle" : "fas fa-times-circle" %>
             <h6><i class="<%= hpi_check %> show-icons"></i>HPI clear</h6>
           </li>
-        </ul>
-      </div>
+        </ul>             
       <div class="bidding-box">
-        <h4>Create a bid on this car</h4>
-        <% if @car.transactions.any? %>
-          <h6 class="my-4 "><strong>Highest Current Bid:</strong> £<%= @car.transactions.last.amount %></h6>
-          <span id="accepted-status">Status: <%= @car.transactions.last.status %></span>
-        <% end %>
-        <%= simple_form_for [@car, @transaction] do |f| %>
-          <%= f.input :amount, input_html: {min: @min , value: @min } %>
-          <%= f.submit "create bid", class: 'btn btn-main' %>
-        <% end %>
-        <% if current_user == @car.user && @car.transactions.any? %>
-          <%= link_to "Accept the bid", accept_bid_car_path(@car), method: :patch %>
-        <% end %>
-        <h6><%= ((Time.now - @car.created_at + 3600)/86400).round %>  days since the car was created </h6>
+          <h4>Bid on this car</h4>
+          <% if @car.transactions.any? %>
+            <h6 class=""><strong>Highest Current Bid:</strong> £<%= number_with_precision(@car.transactions.last.amount, :precision => 2, :delimiter => ',') %></h6>
+            <span id="accepted-status">Status: <%= @car.transactions.last.status %></span>
+          <% end %>
+          <%= simple_form_for [@car, @transaction] do |f| %>
+          <p class="p-tag mt-2">Must be higher than the minimum price</p>
+            <%= f.input :amount, input_html: {min: @min , value: @min } %>
+            <%= f.submit "create bid", class: 'btn btn-main' %>
+          <% end %>
+          <% if current_user == @car.user && @car.transactions.any? %>
+            <%= link_to "Accept the bid", accept_bid_car_path(@car), method: :patch %>
+          <% end %>
+          <h6 class="mt-2"><%= ((Time.now - @car.created_at + 3600)/86400).round %>  days since the car was created </h6>
+        </div>
       </div>
     </div>
   </div>
 </div>
 <% if @similar_cars %>
   <div class="bg-light">
-    <div class="container">
+    <div class="container pt-3 pb-4">
       <h2>View similar cars based on the make you chose</h2>
       <div class="row">
         <% @similar_cars.each do |car| %>
@@ -81,6 +86,7 @@
               <div class="card-index-new my-5">
 
                 <div class="card-index-image" style="background-image: url(<%= car.photos.first ? (cl_image_path car.photos.first.key, crop: :fill) : ""  %>)">
+
 
                 </div>
                 <div class="card-index-text">
@@ -115,10 +121,11 @@
     </div>
   </div>
 <% end %>
+
 <script>
   document.querySelectorAll(".scroll_image").forEach((e) => {
     e.addEventListener("click", (event) => {
-    document.querySelector(".car_show_image").src = event.target.src
+    document.querySelector(".main-gallery-image").src = event.target.src
     })
   })
 </script>

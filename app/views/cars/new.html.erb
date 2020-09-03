@@ -9,7 +9,7 @@
        </div>
 
           <%= simple_form_for @car do |f| %>
-          <% @car_makes_form = ["BMW", "AUDI", "MERCEDES", "ABARTH", "ALFA ROMEO", "ASTON MARTIN"] %>
+          <% @car_makes_form = [ "ASTON MARTIN", "AUDI", "BENTLEY", "BMW", "FIAT", "FORD", "FERRARI", "HONDA", "JEEP", "LAMBORGHINI", "LAND ROVER", "MERCEDES-BENZ", "MINI", "NISSAN", "TOYOTA", "TESLA", "VOLKSWAGEN" ] %>
           <% @car_year_form = (2000..2020).to_a %>
           <div class = "rowfont">
           <div class="row">
@@ -17,7 +17,7 @@
               <%= f.input :make, :collection => @car_makes_form, prompt: 'Select a make', error: 'Make is mandatory, please specify one' %>
             </div>
             <div class="col">
-              <%= f.input :model, label: "Model", placeholder: 'Specify the car model', error: 'Model is mandatory, please specify one' %>
+              <%= f.input :model, label: "Model", placeholder: 'Specify the car model', error: 'Model is mandatory, please specify one', style: "text-transform:uppercase" %>
             </div>
           </div>
 
