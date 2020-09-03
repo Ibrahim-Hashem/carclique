@@ -47,7 +47,7 @@
 
           <div class="row">
             <div class="col">
-              <%= f.input :engine_size, label: "Engine size", placeholder: 'Input the cars engine size', error: 'Engine size is mandatory' %>
+              <%= f.input :engine_size, label: "Engine size", placeholder: 'Input the cars engine size', error: 'Engine size is mandatory', input_html: { step: 0.1, type: 'number', min: 1 } %>
             </div>
             <div class="col">
               <%= f.input :colour, label: "Colour", placeholder: 'e.g Red', error: 'Colour is mandatory, please specify one' %>

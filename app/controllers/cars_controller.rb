@@ -16,15 +16,15 @@ class CarsController < ApplicationController
 
   def show
     @car = Car.find(params[:id])
+    @min = @car.transactions.present? ? @car.transactions.last.amount : @car.price
     @transaction = Transaction.new
-    @similar_cars = Car.where(make: @car.make).first(6)
+    @similar_cars = Car.where(make: @car.make != @car).first(3)
     @markers =
     {
       lat: @car.latitude,
       lng: @car.longitude,
       image_url: helpers.asset_url('mapmarker.png')
     }
-
     if @transaction
       flash[:success] = "Your Bid Has Gone Through"
     else

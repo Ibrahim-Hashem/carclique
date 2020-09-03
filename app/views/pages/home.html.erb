@@ -90,10 +90,13 @@
 
               </div>
               <div class="card-index-text">
-                <span class="date">4 days ago</span>
+                <% if ((Time.now - car.created_at)/86400).ceil == 1 %>
+                <span class="date"><%=((Time.now - car.created_at)/86400).ceil%> Day ago</span>
+                <% else %>
+                <span class="date"><%=((Time.now - car.created_at)/86400).ceil%> Days ago</span>
+                <% end %>
                 <h2> <%= car.make %>   <strong><%= car.model %></strong></h2>
-                <p> blah blah blah blah </p>
-                <h5> <%= car.description %> </h5>
+                <p> <%= car.address %> </p>
               </div>
               <div class="card-index-stats">
                 <div class="stat">

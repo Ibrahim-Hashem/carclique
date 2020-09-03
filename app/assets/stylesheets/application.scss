@@ -14,3 +14,7 @@
 @import "pages/index";
 @import "users/index";
 @import "cars/index";
+
+#min-height{
+  min-height: calc(100vh - 115.758px);
+}
