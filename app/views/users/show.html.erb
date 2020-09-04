@@ -100,9 +100,7 @@
   <% else %>
   <%= link_to car_path(car), class: 'card-link' do %>
       <div class="card-product my-3 losing_bid">
-        <% car.photos.each do |photo| %>
-          <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
-        <% end %>
+        <%= cl_image_tag car.photos.first.key, height: 300, width: 400, crop: :fill %>
         <div class="card-product-infos">
           <div class="text">
             <h2>Make: <%= car.make %></h2>
