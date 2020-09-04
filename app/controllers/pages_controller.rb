@@ -10,7 +10,7 @@ class PagesController < ApplicationController
     #@deals = Car.all.sample(6)
     @deals = Car.order(:price).first(3)
 
-    @reviews = [{name: "Ben", content: "very good service, would definitely recommend"}, {name: "mo", content: "very good service, would definitely recommend"}]
+    @reviews = [{ name: "Ben", content: "very good service, would definitely recommend" }, { name: "Mo", content: "A very, quick and easy way to get rid of debt and make profit"}]
   end
 
   def carousel
