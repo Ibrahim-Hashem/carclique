@@ -5,89 +5,89 @@
 
        <div class="d-flex w-100 justify-content-between align-items-center">
          <h2>Add listing</h2>
-           <%= link_to 'Back to profile', user_path(current_user), class: 'btn btn-secondary' %>
+         <%= link_to 'Back to profile', user_path(current_user), class: 'btn btn-secondary' %>
        </div>
 
-          <%= simple_form_for @car do |f| %>
-          <% @car_makes_form = [ "ASTON MARTIN", "AUDI", "BENTLEY", "BMW", "FIAT", "FORD", "FERRARI", "HONDA", "JEEP", "LAMBORGHINI", "LAND ROVER", "MERCEDES-BENZ", "MINI", "NISSAN", "TOYOTA", "TESLA", "VOLKSWAGEN" ] %>
-          <% @car_year_form = (2000..2020).to_a %>
-          <div class = "rowfont">
-          <div class="row">
-            <div class="col">
-              <%= f.input :make, :collection => @car_makes_form, prompt: 'Select a make', error: 'Make is mandatory, please specify one' %>
-            </div>
-            <div class="col">
-              <%= f.input :model, label: "Model", placeholder: 'Specify the car model', error: 'Model is mandatory, please specify one', style: "text-transform:uppercase" %>
-            </div>
+       <%= simple_form_for @car do |f| %>
+       <% @car_makes_form = [ "ASTON MARTIN", "AUDI", "BENTLEY", "BMW", "FIAT", "FORD", "FERRARI", "HONDA", "JEEP", "LAMBORGHINI", "LAND ROVER", "MERCEDES-BENZ", "MINI", "NISSAN", "TOYOTA", "TESLA", "VOLKSWAGEN" ] %>
+       <% @car_year_form = (2000..2020).to_a %>
+       <div class = "rowfont">
+        <div class="row">
+          <div class="col">
+            <%= f.input :make, :collection => @car_makes_form, prompt: 'Select a make', error: 'Make is mandatory, please specify one' %>
           </div>
-
-          <div class="row justify-content-center">
-            <div class="col">
-              <%= f.input :year, :collection => @car_year_form, prompt: 'Select a year', error: 'Year is mandatory, please specify one' %>
-            </div>
-            <div class="col">
-              <%= f.input :mileage, label: "Mileage", placeholder: '15000', error: 'Mileage is mandatory' %>
-            </div>
-            <div class="col">
-              <%= f.input :registration, label: "Registration", placeholder: 'e.g. NO12 MUI', error: 'Registration is mandatory' %>
-            </div>
+          <div class="col">
+            <%= f.input :model, label: "Model", placeholder: 'Specify the car model', error: 'Model is mandatory, please specify one', style: "text-transform:uppercase" %>
           </div>
+        </div>
 
-          <div class="row justify-content-center border radio-button-field p-3">
-            <div class="col">
-              <%= f.input :fuel_type, label: 'Fuel type', collection: [ ['Diesel' ], ['Petrol'] ], as: :radio_buttons, label_method: :last, value_method: :first, checked: @car.fuel_type, error: 'Fuel type is mandatory, please specify one' %>
-            </div>
-            <div class="col">
-              <%= f.input :transmission, label: 'Transmission type', collection: [ ['Manual' ], ['Automatic'] ], as: :radio_buttons, label_method: :last, value_method: :first, checked: @car.transmission, error: 'Car transmission is mandatory, please specify one' %>
-            </div>
-            <div class="col">
-              <%= f.input :hpi_clear, label: "Is your car HPI clear?", collection: [ ['Yes' ], ['No'] ], as: :radio_buttons, label_method: :last, value_method: :first, checked: @car.hpi_clear, error: 'This is mandatory, please specify' %>
-            </div>
+        <div class="row justify-content-center">
+          <div class="col">
+            <%= f.input :year, :collection => @car_year_form, prompt: 'Select a year', error: 'Year is mandatory, please specify one' %>
           </div>
-
-          <div class="row">
-            <div class="col">
-              <%= f.input :engine_size, label: "Engine size", placeholder: 'Input the cars engine size', error: 'Engine size is mandatory', input_html: { step: 0.1, type: 'number', min: 1 } %>
-            </div>
-            <div class="col">
-              <%= f.input :colour, label: "Colour", placeholder: 'e.g Red', error: 'Colour is mandatory, please specify one' %>
-            </div>
+          <div class="col">
+            <%= f.input :mileage, label: "Mileage", placeholder: '15000', error: 'Mileage is mandatory' %>
           </div>
-
-          <div class="row">
-            <div class="col">
-              <%= f.input :price, label: "Car outstanding PCP balance", placeholder: '£10000', error: 'Outstanding balance is mandatory, please specify one' %>
-            </div>
-            <div class="col">
-              <%= f.input :address, label: "Car Address", placeholder: 'e.g 138 Kingsland Road, London, E2 8DY' %>
-            </div>
+          <div class="col">
+            <%= f.input :registration, label: "Registration", placeholder: 'e.g. NO12 MUI', error: 'Registration is mandatory' %>
           </div>
+        </div>
 
-          <div class="row">
-            <div class="col">
-              <%= f.input :reference, label: 'Car PCP reference number', placeholder: 'e.g *********', error: 'Refernce number is mandatory, please specify one' %>
-            </div>
-            <div class="col">
+        <div class="row justify-content-center border radio-button-field p-3">
+          <div class="col">
+            <%= f.input :fuel_type, label: 'Fuel type', collection: [ ['Diesel' ], ['Petrol'] ], as: :radio_buttons, label_method: :last, value_method: :first, checked: @car.fuel_type, error: 'Fuel type is mandatory, please specify one' %>
+          </div>
+          <div class="col">
+            <%= f.input :transmission, label: 'Transmission type', collection: [ ['Manual' ], ['Automatic'] ], as: :radio_buttons, label_method: :last, value_method: :first, checked: @car.transmission, error: 'Car transmission is mandatory, please specify one' %>
+          </div>
+          <div class="col">
+            <%= f.input :hpi_clear, label: "Is your car HPI clear?", collection: [ ['Yes' ], ['No'] ], as: :radio_buttons, label_method: :last, value_method: :first, checked: @car.hpi_clear, error: 'This is mandatory, please specify' %>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col">
+            <%= f.input :engine_size, label: "Engine size", placeholder: 'Input the cars engine size', error: 'Engine size is mandatory', input_html: { step: 0.1, type: 'number', min: 1 } %>
+          </div>
+          <div class="col">
+            <%= f.input :colour, label: "Colour", placeholder: 'e.g Red', error: 'Colour is mandatory, please specify one' %>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col">
+            <%= f.input :price, label: "Car outstanding PCP balance", placeholder: '£10000', error: 'Outstanding balance is mandatory, please specify one' %>
+          </div>
+          <div class="col">
+            <%= f.input :address, label: "Car Address", placeholder: 'e.g 138 Kingsland Road, London, E2 8DY' %>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col">
+            <%= f.input :reference, label: 'Car PCP reference number', placeholder: 'e.g *********', error: 'Refernce number is mandatory, please specify one' %>
+          </div>
+          <div class="col">
             <%= f.association :finance_provider, label: "Finance Provider", error: 'This is mandatory, please specify one' %>
-            </div>
           </div>
+        </div>
 
-          <div class="row">
-            <div class="col">
-              <%= f.input :description, label: "Description", placeholder: 'Provide a description of your car, including all features...' %>
-            </div>
+        <div class="row">
+          <div class="col">
+            <%= f.input :description, label: "Description", placeholder: 'Provide a description of your car, including all features...' %>
           </div>
+        </div>
 
-          <div class="row">
-            <div class="col">
-              <%= f.input :photos, as: :file, input_html: { multiple: true } %>
-              <%= f.button :submit, class: "btn-main" %>
-              <% end %>
-            </div>
+        <div class="row">
+          <div class="col">
+            <%= f.input :photos, as: :file, input_html: { multiple: true } %>
+            <%= f.button :submit, class: "btn-main" %>
+            <% end %>
           </div>
+        </div>
       </div>
     </div>
-      <!-- form ends -->
-    </div>
+    <!-- form ends -->
   </div>
+</div>
 </div>
